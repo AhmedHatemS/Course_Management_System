@@ -4,6 +4,7 @@ use CourseManagementSystem
 create table mainInfo
 (
 UserId int  IDENTITY(1,1),
+SSN varchar(14) NOT NULL UNIQUE,
 UserName varchar(100) NOT NULL UNIQUE,
 Password varchar(100) NOT NULL,
 role varchar(100) NOT NULL,
@@ -12,7 +13,7 @@ constraint PK_ID PRIMARY KEY(UserId)
 
 create table instructor
 (
-instID int,
+instID int UNIQUE,
 instFName varchar(100) NOT NULL,
 instlName varchar(100) NOT NULL,
 SSN varchar(14) NOT NULL UNIQUE,
@@ -21,7 +22,9 @@ Phone varchar(15) UNIQUE NOT NULL,
 Email nvarchar(100) UNIQUE NOT NULL,
 Address nvarchar(100) NOT NULL,
 Nationality varchar(100) NOT NULL,
-CourseID varchar(100) NOT NULL
+CourseID varchar(100) NOT NULL,
+  -- NOT WORKING -- CONSTRAINT checkRoleStudent CHECK(exists(select userID from  mainInfo where role =  'student'))
+
 );
 
 create table student
@@ -81,16 +84,11 @@ resp4 varchar(200) NOT NULL,
 resp5 varchar(200) NOT NULL,
 );
 
-insert into mainInfo values ('Ahmed Hatem', 'admin', 'admin')
-insert into mainInfo values ('Omnia Sayed', 'admin', 'admin')
-insert into mainInfo values ('Hala Tag', 'admin', 'admin')
-insert into mainInfo values ('Rewaa Ragab', 'admin', 'admin')
-insert into mainInfo values ('Sara Alaa', 'admin', 'admin')
-
-
-insert into student values ('6', 'Sameer' , 'Tarek', '30122270140135', '2018-10-15', '01051731947', 'sameertarek@fci.helwan.edu.eg', 'no address', 'Egypt')
-
-insert into instructor values ('7', 'Omar' , 'Saad', '30122270140130', '1970-10-15', '01051811947', 'omarsaad@fci.helwan.edu.eg', 'no address', 'Egypt', 'mth1')
+insert into mainInfo values ('2020212223', 'Ahmed Hatem', 'admin', 'admin')
+insert into mainInfo values ('2020212224', 'Omnia Sayed', 'admin', 'admin')
+insert into mainInfo values ('2020212225', 'Hala Tag', 'admin', 'admin')
+insert into mainInfo values ('2020212226', 'Rewaa Ragab', 'admin', 'admin')
+insert into mainInfo values ('2020212227', 'Sara Alaa', 'admin', 'admin')
 
 insert into courses values ('mth1', 'math1', 'null', '2020-10-18', '2021-1-17', '30', '500', '1', 'cairo', '0')
 insert into courses values ('cs111', 'intro to CS', 'null', '2020-10-18', '2021-1-17', '30', '1000', '1', 'cairo', '0')
