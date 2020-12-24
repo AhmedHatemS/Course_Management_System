@@ -9,6 +9,6 @@ package AdminModule;
  *
  * @author devah
  */
-public class toBeEdit {
+public class ManageData {
     
 }
