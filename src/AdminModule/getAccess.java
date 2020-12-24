@@ -50,6 +50,10 @@ public class GetAccess {
         return false;
     }
 
+    public boolean logout() {
+        return false;
+    }
+
     public String returnSSN() throws SQLException, ClassNotFoundException {
         //connection
         c = DBconnect.connect();
