@@ -97,3 +97,4 @@ select * from mainInfo
 select * from student
 select * from instructor
 select * from courses
+ 

@@ -15,12 +15,7 @@ public class CourseManagementSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-//        GetAccess g = new GetAccess();
-//        g.login("Omnia Sayed", "admin");
-//        System.out.println(g.returnSSN());
-//        System.out.println(g.returnRole());
-        ManageData m = new ManageData();
-        m.deleteInstructor("30172871911784");
+//       
     }
 
 }
