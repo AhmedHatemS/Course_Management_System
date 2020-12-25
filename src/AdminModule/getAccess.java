@@ -37,14 +37,12 @@ public class GetAccess {
             query = "SELECT COUNT (mainInfo.UserId) AS rowsCount FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            if (rs.getInt("rowsCount") == 1) {
-                System.out.println("Login with given username and password has been succeeded.");
+            if (rs.getInt("rowsCount") == 1) {//succeeded
                 UserID();
                 SSN();
                 role();
                 return true;
-            } else {
-                System.out.println("Login with given username and password has been failed.");
+            } else {//failed
                 return false;
             }
         } catch (SQLException e) {
@@ -62,7 +60,7 @@ public class GetAccess {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
-            query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.SSN LIKE '" + this.SSN + "'";
+            query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
             rs = ss.executeQuery(query);
             rs.next();
             this.ID = rs.getInt("id");
@@ -92,7 +90,7 @@ public class GetAccess {
         //code
         ss = c.createStatement();
         try {
-            query = "SELECT mainInfo.role AS role FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "'";
+            query = "SELECT mainInfo.role AS role FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
             rs = ss.executeQuery(query);
             rs.next();
             this.role = rs.getString("role");
