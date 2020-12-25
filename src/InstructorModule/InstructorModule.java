@@ -21,8 +21,7 @@ public class InstructorModule {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
-            query = "SELECT CourseID AS cid FROM instructor WHERE instructor.instID LIKE '34'";
-            //query = "SELECT CourseID AS cid FROM instructor WHERE instructor.SSN LIKE '" + instSSN + "'";
+            query = "SELECT CourseID AS cid FROM instructor WHERE instructor.SSN LIKE '" + instSSN + "'";
             rs = ss.executeQuery(query);
             rs.next();
             return rs.getString("cid");
