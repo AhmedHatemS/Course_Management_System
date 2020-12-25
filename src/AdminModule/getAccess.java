@@ -10,15 +10,15 @@ import java.sql.*;
 
 public class GetAccess {
 
-    String userName;
-    String password;
-    String SSN;
-    String role;
-
-    static Connection c;
-    static Statement ss;
-    static ResultSet rs;
-    static String query;
+    private String userName;
+    private String password;
+    private int ID;
+    private String SSN;
+    private String role;
+    private static Connection c;
+    private static Statement ss;
+    private static ResultSet rs;
+    private static String query;
 
     public boolean login() {
         return false;
@@ -39,6 +39,9 @@ public class GetAccess {
             rs.next();
             if (rs.getInt("rowsCount") == 1) {
                 System.out.println("Login with given username and password has been succeeded.");
+                UserID();
+                SSN();
+                role();
                 return true;
             } else {
                 System.out.println("Login with given username and password has been failed.");
@@ -54,7 +57,21 @@ public class GetAccess {
         return false;
     }
 
-    public String returnSSN() throws SQLException, ClassNotFoundException {
+    private void UserID() throws ClassNotFoundException, SQLException {
+
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.SSN LIKE '" + this.SSN + "'";
+            rs = ss.executeQuery(query);
+            rs.next();
+            this.ID = rs.getInt("id");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    private void SSN() throws ClassNotFoundException, SQLException {
         //connection
         c = DBconnect.connect();
         //code
@@ -63,15 +80,13 @@ public class GetAccess {
             query = "SELECT mainInfo.SSN AS SSN FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            SSN = rs.getString("SSN");
+            this.SSN = rs.getString("SSN");
         } catch (SQLException e) {
             System.out.println(e);
         }
-
-        return SSN;
     }
 
-    public String returnRole() throws SQLException, ClassNotFoundException {
+    private void role() throws ClassNotFoundException, SQLException {
         //connection
         c = DBconnect.connect();
         //code
@@ -80,11 +95,22 @@ public class GetAccess {
             query = "SELECT mainInfo.role AS role FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            role = rs.getString("role");
+            this.role = rs.getString("role");
         } catch (SQLException e) {
             System.out.println(e);
         }
-
-        return role;
     }
+
+    public int returnUserID() {
+        return this.ID;
+    }
+
+    public String returnSSN() throws SQLException, ClassNotFoundException {
+        return this.SSN;
+    }
+
+    public String returnRole() throws SQLException, ClassNotFoundException {
+        return this.role;
+    }
+
 }

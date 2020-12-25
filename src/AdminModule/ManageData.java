@@ -1,14 +1,220 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package AdminModule;
+
+import MainDriver.DBconnect;
+import java.util.*;
+import java.sql.*;
+import java.sql.Date;
 
 /**
  *
  * @author devah
  */
 public class ManageData {
-    
+
+    private int ID;
+    private String SSN;
+    private String userName;
+    private String password;
+    private String role;
+    private String firstName;
+    private String lastName;
+    private Date DoB;
+    private String phone;
+    private String email;
+    private String address;
+    private String nationality;
+    private String courseID;
+
+    private static Connection c;
+    private static Statement ss;
+    private static ResultSet rs;
+    private static String query;
+
+    private int assignUserID() throws ClassNotFoundException, SQLException {
+
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.SSN LIKE '" + this.SSN + "'";
+            rs = ss.executeQuery(query);
+            rs.next();
+            this.ID = rs.getInt("id");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return this.ID;
+    }
+
+    private boolean foundSSN() throws ClassNotFoundException, SQLException {
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            query = "SELECT COUNT(SSN) AS countValSSN FROM mainInfo where mainInfo.SSN LIKE '" + this.SSN + "'";
+            rs = ss.executeQuery(query);
+            rs.next();
+            if (rs.getInt("countValSSN") == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    private String checkRole() throws ClassNotFoundException, SQLException {
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            query = "SELECT mainInfo.role AS countValRole FROM mainInfo where mainInfo.SSN LIKE '" + this.SSN + "'";
+            rs = ss.executeQuery(query);
+            rs.next();
+            return rs.getString("countValRole");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return "";
+    }
+
+    public void addUser(String SSN, String userName, String password, String role) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        this.userName = userName;
+        this.password = password;
+        this.role = role.toLowerCase();
+
+        if ((this.SSN).length() != 14) {
+            System.out.println("SSN must be only 14 digits, check the SSN and try again.");
+        } else if (!"admin".equals(this.role)) {
+            System.out.println("This role can't be inserted, check the role and try again.");
+        } else {
+            c = DBconnect.connect();
+            ss = c.createStatement();
+            try {
+                query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('" + this.SSN + "' , '" + this.userName + "' , '" + this.password + "' , '" + this.role + "')";
+                ss.execute(query);
+                assignUserID();
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void addStudent(String userName, String password, String firstName, String lastName, String SSN, String DoB, String phone, String email, String address, String nationality) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        this.userName = userName;
+        this.password = password;
+        this.role = "student";
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.DoB = Date.valueOf(DoB);
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.nationality = nationality;
+
+        if ((this.SSN).length() != 14) {
+            System.out.println("SSN must be only 14 digits, check the SSN and try again.");
+        } else {
+            c = DBconnect.connect();
+            ss = c.createStatement();
+            try {
+                query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('"
+                        + this.SSN + "' , '" + this.userName + "' , '" + this.password + "' , '" + this.role + "') ";
+                ss.execute(query);
+                query = " INSERT INTO student(studID, studFirstName, studLastName, SSN, DOB, Phone, Email, Address, Nationality) "
+                        + "VALUES ('" + assignUserID() + "' , '" + this.firstName + "' , '" + this.lastName + "' , '"
+                        + this.SSN + "' , '" + this.DoB + "' , '" + this.phone + "' , '" + this.email
+                        + "' , '" + this.address + "' , '" + this.nationality + "')";
+                ss.execute(query);
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void addInstructor(String userName, String password, String firstName, String lastName, String SSN, String DoB, String phone, String email, String address, String nationality, String courseID) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        this.userName = userName;
+        this.password = password;
+        this.role = "instructor";
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.DoB = Date.valueOf(DoB);
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.nationality = nationality;
+        this.courseID = courseID;
+
+        if ((this.SSN).length() != 14) {
+            System.out.println("SSN must be only 14 digits, check the SSN and try again.");
+        } else {
+            c = DBconnect.connect();
+            ss = c.createStatement();
+            try {
+                query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('"
+                        + this.SSN + "' , '" + this.userName + "' , '" + this.password + "' , '" + this.role + "') ";
+
+                ss.execute(query);
+                query = "INSERT INTO instructor(instID, instFName, instlName, SSN, DOB, Phone, Email, Address, Nationality, CourseID) "
+                        + "VALUES ('" + assignUserID() + "' , '" + this.firstName + "' , '" + this.lastName
+                        + "' , '" + this.SSN + "' , '" + this.DoB + "' , '" + this.phone + "' , '" + this.email
+                        + "' , '" + this.address + "' , '" + this.nationality + "' , '" + this.courseID + "')";
+                ss.execute(query);
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public void deleteUser(String SSN) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            if (foundSSN() && !"student".equals(checkRole()) && !"instructor".equals(checkRole())) {
+                query = "delete mainInfo where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+            } else {
+                System.out.println("Record with this SSN not found or can't be deleted.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteStudent(String SSN) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            if (foundSSN() && "student".equals(checkRole())) {
+                query = "delete mainInfo where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+                query = "delete student where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+            } else {
+                System.out.println("Record with this SSN not found or can't be deleted.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    public void deleteInstructor(String SSN) throws ClassNotFoundException, SQLException {
+        this.SSN = SSN;
+        c = DBconnect.connect();
+        ss = c.createStatement();
+        try {
+            if (foundSSN() && "instructor".equals(checkRole())) {
+                query = "delete mainInfo where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+                query = "delete instructor where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+            } else {
+                System.out.println("Record with this SSN not found or can't be deleted.");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
 }
