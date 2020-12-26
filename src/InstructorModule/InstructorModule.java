@@ -42,7 +42,7 @@ public class InstructorModule {
             try {
                 instSSN = MainDriver.CourseManagementSystem.loginSSN;
                 courseID = returnInstCourseID();
-                query = "UPDATE grades SET  "+ courseID +" = '"+ this.grade +"' WHERE grades.studID LIKE '"+ this.studentID +"'";
+                query = "UPDATE grades SET  " + courseID + " = '" + this.grade + "' WHERE grades.studID LIKE '" + this.studentID + "'";
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
@@ -50,60 +50,32 @@ public class InstructorModule {
         }
     }
 
-    /*private int assignINSID() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
-        ss = c.createStatement();
-        try {
-            query = "SELECT instructor.CourseID AS id FROM instructor WHERE instID LIKE '" + INStID + "'";
-            rs = ss.executeQuery(query);
-            rs.next();
-            this.ID = rs.getInt("id");
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return this.ID;
-    }
-
-    public void addInstructor() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
-        ss = c.createStatement();
-        try {
-            Scanner x = new Scanner(System.in);
-            System.out.println("Degree:");
-            int d = x.nextInt();
-            System.out.println("Student ID:");
-            id = x.nextInt();
-            query = "INSERT INTO grades(" + assignINSID() + ") VALUES (" + d + ") WHERE studID LIKE '" + id + "'";
-            ss.execute(query);
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-    }
-
-    public void publish() {
-        c = DBconnect.connect();
-        ss = c.createStatement();
-        try {
-            ArrayList<elem> list = new ArrayList<elem>();
-            query = "select * from grades";
-            rs = ss.executeQuery(query);
-
-            System.out.println("ID\tDegree");
-            while (rs.next()) {
-                elem a = new elem(rs.getString("studID"), rs.getString("courseName"))
-                );
-                list.add(a);
+    public void publish() throws ClassNotFoundException, SQLException {
+        if (!"instructor".equals(CourseManagementSystem.loginRole)) {
+            System.out.println("Not instructor.");
+        } else {
+            c = DBconnect.connect();
+            ss = c.createStatement();
+            try {
+                instSSN = MainDriver.CourseManagementSystem.loginSSN;
+                courseID = returnInstCourseID();
+               query = "SELECT grades.studID, studFirstName, studLastName, "+ courseID +" FROM student INNER JOIN grades ON student.studID = grades.studID";
+                ResultSet rs = ss.executeQuery(query);
+                if (rs.next()) {
+                    System.out.println("_______________________________________________________");
+                    System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n", "ID", "first name", "last name", "Grade of "+ courseID);
+                    do {
+                        System.out.println("-------------------------------------------------------");
+                        System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n" , rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+                        
+                    } while (rs.next());
+                    System.out.println("-------------------------------------------------------");
+                } else {
+                    System.out.println("Record Not Found...");
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-            for (int i = 0; i < list.size(); i++) {
-                System.out.print(list.get(i).id);
-                System.out.print("\t\t");
-                System.out.print(list.get(i).Degree);
-                System.out.println();
-            }
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
         }
-
-    }*/
+    }
 }

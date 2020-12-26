@@ -98,3 +98,4 @@ select * from student
 select * from instructor
 select * from courses
 SELECT * FROM grades
+SELECT grades.studID, studFirstName, studLastName, CS111 FROM student, grades 

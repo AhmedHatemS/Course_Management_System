@@ -42,7 +42,7 @@ public class CourseManagementSystem {
             loginSSN = access.returnSSN();
             loginRole = access.returnRole();
             loginID = access.returnUserID();
-            instructor.addGrade(31, 200);
+            instructor.publish();
             /*do {
                 //code to execute
             } while (access.login(userName, password));*/
