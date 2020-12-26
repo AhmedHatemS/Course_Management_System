@@ -16,20 +16,23 @@ public class Update  {
     static Statement ss;
     static String query;
     static ResultSet rs;
-     Scanner s=new Scanner(System.in);
-    public void UpdatePhone() throws ClassNotFoundException
+     private int id;
+    private String password;
+    private String FName;
+    private String LName;
+    private String phone;
+    private String Email;
+    private String Address;
+    private String Nationality;
+    public void UpdatePhone(int id,String phone) throws ClassNotFoundException
     {
-       
+        this.id=id;
+        this.phone = phone;
       DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
-   
-    System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Phone:");
-       String Phone=s.next();
-      query ="update student set Phone='"+Phone+"' where studID='"+id+ "'";
+      query ="update student set Phone='"+this.phone+"' where studID='"+this.id+ "'";
         ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
@@ -44,20 +47,17 @@ public class Update  {
             }
     }
     //Function Update Name
-   public void UpdateName() throws ClassNotFoundException
-    {
+   public void UpdateName(int ID,String FName,String LName) throws ClassNotFoundException
+    {   
+        this.id=id;
+        this.FName=FName;
+        this.LName=LName;
    
         DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
-    
-     System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Name:");
-       String FName=s.next();
-       String LName=s.next();
-      query ="update student set studFirstName='"+FName+"',studLastName='"+LName+"'where studID='"+id+ "'";
+      query ="update student set studFirstName='"+this.FName+"',studLastName='"+this.LName+"'where studID='"+this.id+ "'";
         ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
@@ -72,19 +72,15 @@ public class Update  {
             }
         }
    //Function Update Emails
-     public void UpdateEmail() throws ClassNotFoundException
-    {
+     public void UpdateEmail(int id,String Email) throws ClassNotFoundException
+    {   this.id=id;
+        this.Email=Email;
    
         DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
-   
-    System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Email:");
-       String Email=s.next();
-      query ="update student set Email='"+Email+"' where studID='"+id+ "'";
+         query ="update student set Email='"+this.Email+"' where studID='"+this.id+ "'";
        //query ="update student set SSN=345788996791 where studID=1";
         ss.execute(query);
         System.out.println("Updated");
@@ -100,21 +96,16 @@ public class Update  {
             }
     }
      //Function to update address
-         public void UpdateAddress() throws ClassNotFoundException
+         public void UpdateAddress(int id,String Address) throws ClassNotFoundException
     {
-   
+       this.id=id;
+       this.Address=Address;
        DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
-             ss=c.createStatement();
-   
-   System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Address:");
-  String Address=s.next();  
-      query ="update student set Address='"+Address+"' where studID='"+id+ "'";
-      
-        ss.execute(query);
+             ss=c.createStatement(); 
+      query ="update student set Address='"+this.Address+"' where studID='"+this.id+ "'";
+       ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
               System.out.println(ex.getMessage());
@@ -128,19 +119,15 @@ public class Update  {
             }
     }
          //Function to update Nationality
-             public void UpdateNationality() throws ClassNotFoundException
+             public void UpdateNationality(int id,String Nationality) throws ClassNotFoundException
     {
-   
+        this.id=id;
+        this.Nationality=Nationality;
         DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
-  
-     System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Nationality:");
-       String n=s.next();
-      query ="update student set Nationality='"+n+"' where studID='"+id+ "'";
+      query ="update student set Nationality='"+this.Nationality+"' where studID='"+this.id+ "'";
         ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
@@ -154,28 +141,21 @@ public class Update  {
            
             }
     }
-      public void UpdateAll() throws SQLException, SQLException, SQLException, ClassNotFoundException
+      public void UpdateAll(int id,String Address,String Email,String FName,String LName,String Nationality,String phone  ) throws SQLException, SQLException, SQLException, ClassNotFoundException
     {
-   
+        this.id=id;
+        this.Address=Address;
+        this.Email=Email;
+        this.FName=FName;
+        this.LName=LName;
+        this.Nationality=Nationality;
+        this.phone=phone;
+        
         DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
-   
-     System.out.println("StudentID:");
-       int id =s.nextInt();
-     System.out.println("Name:");
-       String FName=s.next();
-       String LName=s.next();
-        System.out.println("Nationality:");
-       String Nat=s.next();
-        System.out.println("Address:");
-       String Address=s.next();
-         System.out.println("Email:");
-       String Email=s.next();
-         System.out.println("Phone:");
-       String Phone=s.next();
-      query ="update student set studFirstName='"+FName+"',studLastName='"+LName+"',Nationality='"+Nat+"',Address='"+Address+"',Phone='"+Phone+"',Email='"+Email+"'where studID='"+id+ "'";
+      query ="update student set studFirstName='"+this.FName+"',studLastName='"+this.LName+"',Nationality='"+this.Nationality+"',Address='"+this.Address+"',Phone='"+this.phone+"',Email='"+this.Email+"'where studID='"+this.id+ "'";
         ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
@@ -188,47 +168,21 @@ public class Update  {
             }catch(SQLException s){}
            
             }
-        }  
-      
- 
-}
-    
+        }
+          public void updatePassword(int id, String password) throws ClassNotFoundException, SQLException {
+        this.id=id;
+        this.password = password;
        
-    
-
-
-    public void UpdateAll() throws SQLException, SQLException, SQLException, ClassNotFoundException {
-
-        c = DBconnect.connect();
-        try {
+            c = DBconnect.connect();
             ss = c.createStatement();
-            Scanner s = new Scanner(System.in);
-            System.out.println("StudentID:");
-            int id = s.nextInt();
-            System.out.println("Name:");
-            String FName = s.next();
-            String LName = s.next();
-            System.out.println("Nationality:");
-            String Nat = s.next();
-            System.out.println("Address:");
-            String Address = s.next();
-            System.out.println("Email:");
-            String Email = s.next();
-            System.out.println("Phone:");
-            String Phone = s.next();
-            query = "update student set studFirstName='" + FName + "',studLastName='" + LName + "',Nationality='" + Nat + "',Address='" + Address + "',Phone='" + Phone + "',Email='" + Email + "'where studID='" + id + "'";
-            ss.execute(query);
-            System.out.println("Updated");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
             try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
+                 c = DBconnect.connect();
+            ss = c.createStatement();
+               query ="update mainInfo set mainInfo.Password='"+this.password +"' where UserID='"+this.id+ "'";
+                ss.execute(query);
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-
         }
-    }
-
+ }
 }
