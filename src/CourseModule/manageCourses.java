@@ -8,7 +8,7 @@ import java.util.*;
 public class manageCourses {
     
 
-    dbConn c1 = new dbConn();
+    DBconnect c1 = new DBconnect();
     static Connection c;
     static Statement ss;
     ResultSet rs=null;
