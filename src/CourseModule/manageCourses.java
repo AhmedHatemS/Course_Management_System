@@ -64,7 +64,7 @@ public class manageCourses {
     }
     //method to return end date in the form of string
 
-    public String getEndDate() {
+    public String getEndDate(int endDay, int endMonth, int endYear) {
         String x;
         x = "" + endYear + "-" + endMonth + "-" + endDay;
         return x;
