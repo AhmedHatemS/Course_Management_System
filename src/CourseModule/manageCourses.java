@@ -155,45 +155,19 @@ public class manageCourses {
     }
     // method to add course
 
-    public void addcourse(String courseID, String courseName) throws SQLException, ClassNotFoundException {
+    public void addcourse(String courseID, String courseName, String parentCourse, int price,
+            int room, String branch, int instID, int startDay,
+            int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) throws SQLException {
         try {
-            System.out.println("Enter parent Course ID: ");
-            parentCourse = input.nextLine();
-            System.out.println("Enter Branch: ");
-            branch = input.nextLine();
-            System.out.println("Enter Course Price: ");
-            price = input.nextInt();
-            System.out.println("Enter Course room: ");
-            room = input.nextInt();
-            System.out.println("Enter Course Start day: ");
-            startDay = input.nextInt();
-            System.out.println("Enter Course Start month: ");
-            startMonth = input.nextInt();
-            System.out.println("Enter Course Start year: ");
-            startYear = input.nextInt();
-            System.out.println("Enter Course End day: ");
-            endDay = input.nextInt();
-            System.out.println("Enter Course End month: ");
-            endMonth = input.nextInt();
-            System.out.println("Enter Course End year: ");
-            endYear = input.nextInt();
-            System.out.println("Enter Days of course: ");
-            daysOfCourse = input.nextInt();
-            System.out.println("Enter Instructor ID: ");
-            instID = input.nextInt();
-            while (checkinstructor() == true) {
-                System.out.println("invalid instructor id enter another one");
-                instID = input.nextInt();
-            }
             startDate = getStartdate(startDay, startMonth, startYear);
             endDate = getStartdate(endDay, endMonth, endYear);
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "insert into courses values('" + courseID + "', '" + courseName + "','" + parentCourse + "','" + startDate + "','" + endDate + "','" + daysOfCourse + "','" + price + "','" + room + "','" + branch + "','" + instID + "')";
             ss.execute(query);
-            query = "alter table grades add " + courseID + " int";
-            ss.execute(query);
-            query = "alter table regesteredCourses add " + courseID + " int";
+            query = "alter table grades add "+courseID+" int";
+            ss.execute(query);    
+            query = "alter table regesteredCourses add "+courseID+" int";
             ss.execute(query);
             System.out.println("inserted");
         } catch (SQLException se) {
@@ -202,8 +176,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException e) {
-                System.out.println(e);
+            } catch (SQLException se) {
+System.out.println(se);
             }
         }
 
