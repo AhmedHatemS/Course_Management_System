@@ -7,29 +7,28 @@ import java.util.*;
 
 public class manageCourses {
 
-    DBconnect c1 = new DBconnect();
-    static Connection c;
-    static Statement ss;
-    ResultSet rs = null;
-    static String query;
-    String courseID;
-    String courseName;
-    String parentCourse;
-    String branch;
-    int price;
-    int room;
-    int instID;
-    String startDate;
-    String endDate;
-    int startDay;
-    int startMonth;
-    int startYear;
-    int endDay;
-    int endMonth;
-    int endYear;
-    int daysOfCourse;
+    private DBconnect c1 = new DBconnect();
+    private static Connection c;
+    private static Statement ss;
+    private ResultSet rs=null;
+    private static String query;
+    private String courseID;
+    private String courseName;
+    private String parentCourse;
+    private String branch;
+    private int price;
+    private int room;
+    private int instID;
+    private String startDate;
+    private String endDate;
+    private int startDay;
+    private int startMonth;
+    private int startYear;
+    private int endDay;
+    private int endMonth;
+    private int endYear;
+    private int daysOfCourse;
     Scanner input = new Scanner(System.in);
-    public boolean check;
 //no arg constructor
 
     public manageCourses() {
@@ -58,14 +57,14 @@ public class manageCourses {
     }
     //method to return start date in the form of string
 
-    public String getStartdate(int startDay, int startMonth, int startYear) {
+    public String getStartDate(int startDay, int startMonth, int startYear) {
         String s;
         s = "" + startYear + "-" + startMonth + "-" + startDay;
         return s;
     }
     //method to return end date in the form of string
 
-    public String getenddate() {
+    public String getEndDate() {
         String x;
         x = "" + endYear + "-" + endMonth + "-" + endDay;
         return x;
@@ -155,12 +154,12 @@ public class manageCourses {
     }
     // method to add course
 
-    public void addcourse(String courseID, String courseName, String parentCourse, int price,
+    public void addCourse(String courseID, String courseName, String parentCourse, int price,
             int room, String branch, int instID, int startDay,
             int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) throws SQLException, ClassNotFoundException {
         try {
-            startDate = getStartdate(startDay, startMonth, startYear);
-            endDate = getStartdate(endDay, endMonth, endYear);
+            startDate = getStartDate(startDay, startMonth, startYear);
+            endDate = getEndDate(endDay, endMonth, endYear);
             c = DBconnect.connect();
             ss = c.createStatement();
             query = "insert into courses values('" + courseID + "', '" + courseName + "','" + parentCourse + "','" + startDate + "','" + endDate + "','" + daysOfCourse + "','" + price + "','" + room + "','" + branch + "','" + instID + "')";
@@ -284,7 +283,7 @@ public class manageCourses {
     }
     // method to update start date of course
 
-    public void updatestartDate(String courseID, String startDate) throws ClassNotFoundException {
+    public void updateStartDate(String courseID, String startDate) throws ClassNotFoundException {
         try {
             c = DBconnect.connect();
             ss = c.createStatement();
