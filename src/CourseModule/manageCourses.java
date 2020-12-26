@@ -72,8 +72,8 @@ public class manageCourses {
     }
 
     // method to check if the entered course exist or not return false if it is existed and true if not 
-    public boolean checkCourses(String courseID, String courseName) throws SQLException {
-        c = c1.connect();
+    public boolean checkCourses(String courseID, String courseName) throws SQLException, ClassNotFoundException {
+        c = DBconnect.connect();
         ss = c.createStatement();
         try {
             query = "SELECT COUNT (courses.courseID) AS rowsCount FROM courses where courses.courseName LIKE '" + courseName + "'";
@@ -93,8 +93,8 @@ public class manageCourses {
     }
 
     // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-    public boolean checkinstructor() throws SQLException {
-        c = c1.connect();
+    public boolean checkinstructor() throws SQLException, ClassNotFoundException {
+        c = DBconnect.connect();
         ss = c.createStatement();
         try {
             query = "SELECT COUNT (instructor.instID) AS rowsCount FROM instructor where instructor.instID LIKE '" + this.instID + "'";
@@ -134,8 +134,8 @@ public class manageCourses {
 //        return true;
 //    }
     // method to change the parent course with null in case of deleting the course
-    public void checkparent(String parentCourse) throws SQLException {
-        c = c1.connect();
+    public void checkparent(String parentCourse) throws SQLException, ClassNotFoundException {
+        c = DBconnect.connect();
         ss = c.createStatement();
         try {
             query = "update courses set parentCourse='null' where parentCourse='" + parentCourse + "'";
@@ -154,7 +154,7 @@ public class manageCourses {
     }
     // method to add course
 
-    public void addcourse(String courseID, String courseName) throws SQLException {
+    public void addcourse(String courseID, String courseName) throws SQLException, ClassNotFoundException {
         try {
             System.out.println("Enter parent Course ID: ");
             parentCourse = input.nextLine();
@@ -186,7 +186,7 @@ public class manageCourses {
             }
             startDate = getStartdate(startDay, startMonth, startYear);
             endDate = getStartdate(endDay, endMonth, endYear);
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "insert into courses values('" + courseID + "', '" + courseName + "','" + parentCourse + "','" + startDate + "','" + endDate + "','" + daysOfCourse + "','" + price + "','" + room + "','" + branch + "','" + instID + "')";
             ss.execute(query);
@@ -209,9 +209,9 @@ public class manageCourses {
     }
     // method to update  parent course
 
-    public void updateParentCourse(String courseID, String parentCourse) {
+    public void updateParentCourse(String courseID, String parentCourse) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set parentCourse='" + parentCourse + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -229,9 +229,9 @@ public class manageCourses {
     }
     // method to update price of course
 
-    public void updatePriceOfCourse(String courseID, int price) {
+    public void updatePriceOfCourse(String courseID, int price) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set price='" + price + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -249,9 +249,9 @@ public class manageCourses {
     }
     // method to update room 
 
-    public void updateRoom(String courseID, int room) {
+    public void updateRoom(String courseID, int room) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set room='" + room + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -269,9 +269,9 @@ public class manageCourses {
     }
     // method to update branch
 
-    public void updateBranch(String courseID, String branch) {
+    public void updateBranch(String courseID, String branch) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set branch='" + branch + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -289,9 +289,9 @@ public class manageCourses {
     }
     // method to update no of days of the course
 
-    public void updateDaysOfCourse(String courseID, int daysOfCourse) {
+    public void updateDaysOfCourse(String courseID, int daysOfCourse) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set daysOfcourse='" + daysOfCourse + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -309,9 +309,9 @@ public class manageCourses {
     }
     // method to update start date of course
 
-    public void updatestartDate(String courseID, String startDate) {
+    public void updatestartDate(String courseID, String startDate) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set startDate='" + startDate + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -329,9 +329,9 @@ public class manageCourses {
     }
 // method to update end date of course
 
-    public void updateendDate(String courseID, String endDate) {
+    public void updateendDate(String courseID, String endDate) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "update courses set endDate='" + endDate + "' where courseID='" + courseID + "'";
             ss.execute(query);
@@ -349,9 +349,9 @@ public class manageCourses {
     }
 // method to delete course
 
-    public void deleteCourse(String courseID) {
+    public void deleteCourse(String courseID) throws ClassNotFoundException {
         try {
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "delete from courses where courseID='" + courseID + "'";
             ss.execute(query);

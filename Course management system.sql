@@ -97,5 +97,8 @@ select * from mainInfo
 select * from student
 select * from instructor
 select * from courses
+select * from regesteredCourses
 SELECT * FROM grades
 SELECT grades.studID, studFirstName, studLastName, CS111 FROM student, grades 
+SELECT INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'student'
+ALTER TABLE regesteredCourses ADD IS213 INT
