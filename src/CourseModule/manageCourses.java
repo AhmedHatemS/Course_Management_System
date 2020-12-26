@@ -113,6 +113,7 @@ public class manageCourses {
         }
         return true;
     }
+    // this code to check if the choosen instructor teach the choosen course  
 //    public boolean checkinstructorCourse(String courseID) throws SQLException {
 //        c = c1.connect();
 //        String x;
@@ -190,7 +191,7 @@ public class manageCourses {
             ss.execute(query);
             query = "alter table grades add "+courseID+" int";
             ss.execute(query);    
-            query = "alter table regesteredCourses add "+courseID+" varchar(100)";
+            query = "alter table regesteredCourses add "+courseID+" int";
             ss.execute(query);
             System.out.println("inserted");
         } catch (SQLException se) {
