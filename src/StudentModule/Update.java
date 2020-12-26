@@ -1,4 +1,5 @@
 package StudentModule;
+import MainDriver.DBconnect;
 import static MainDriver.DBconnect.connect;
 import static java.lang.System.in;
 import java.sql.Connection;
@@ -15,10 +16,10 @@ public class Update  {
     static Statement ss;
     static String query;
     static ResultSet rs;
-    public void UpdatePhone()
+    public void UpdatePhone() throws ClassNotFoundException
     {
    
-        conn c1=new conn();
+      DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -42,10 +43,10 @@ public class Update  {
             }
     }
     //Function Update Name
-   public void UpdateName()
+   public void UpdateName() throws ClassNotFoundException
     {
    
-        conn c1=new conn();
+        DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -70,10 +71,10 @@ public class Update  {
             }
         }
    //Function Update Emails
-     public void UpdateEmail()
+     public void UpdateEmail() throws ClassNotFoundException
     {
    
-        conn c1=new conn();
+        DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -98,10 +99,10 @@ public class Update  {
             }
     }
      //Function to update address
-         public void UpdateAddress()
+         public void UpdateAddress() throws ClassNotFoundException
     {
    
-        conn c1=new conn();
+       DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -126,10 +127,10 @@ public class Update  {
             }
     }
          //Function to update Nationality
-             public void UpdateNationality()
+             public void UpdateNationality() throws ClassNotFoundException
     {
    
-        conn c1=new conn();
+        DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -152,10 +153,10 @@ public class Update  {
            
             }
     }
-      public void UpdateAll() throws SQLException, SQLException, SQLException
+      public void UpdateAll() throws SQLException, SQLException, SQLException, ClassNotFoundException
     {
    
-        conn c1=new conn();
+        DBconnect c1=new  DBconnect();
         try {
             c=c1.connect();
              ss=c.createStatement();
@@ -166,14 +167,14 @@ public class Update  {
        String FName=s.next();
        String LName=s.next();
         System.out.println("Nationality:");
-       String n=s.next();
+       String Nat=s.next();
         System.out.println("Address:");
        String Address=s.next();
          System.out.println("Email:");
        String Email=s.next();
          System.out.println("Phone:");
        String Phone=s.next();
-      query ="update student set studFirstName='"+FName+"',studLastName='"+LName+"'Nationality='"+n+"'Address='"+Address+"'Phone='"+Phone+"'Email='"+Email+"'where studID='"+id+ "'";
+      query ="update student set studFirstName='"+FName+"',studLastName='"+LName+"',Nationality='"+Nat+"',Address='"+Address+"',Phone='"+Phone+"',Email='"+Email+"'where studID='"+id+ "'";
         ss.execute(query);
         System.out.println("Updated");
         } catch (SQLException ex) {
@@ -190,5 +191,3 @@ public class Update  {
       
  
 }
-    
-       
