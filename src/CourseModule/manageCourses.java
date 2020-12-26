@@ -112,6 +112,7 @@ public class manageCourses {
         }
         return true;
     }
+
     // this code to check if the choosen instructor teach the choosen course  
 //    public boolean checkinstructorCourse(String courseID) throws SQLException {
 //        c = c1.connect();
@@ -147,8 +148,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -201,8 +202,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
 
@@ -222,8 +223,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -242,8 +243,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -262,8 +263,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -282,8 +283,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -302,8 +303,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -322,8 +323,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -342,8 +343,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
     }
@@ -367,8 +368,8 @@ public class manageCourses {
             try {
                 c.close();
                 ss.close();
-            } catch (SQLException se) {
-
+            } catch (SQLException e) {
+                System.out.println(e);
             }
         }
 
