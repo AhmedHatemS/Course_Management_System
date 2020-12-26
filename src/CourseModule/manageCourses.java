@@ -6,12 +6,11 @@ import java.sql.*;
 import java.util.*;
 
 public class manageCourses {
-    
 
     DBconnect c1 = new DBconnect();
     static Connection c;
     static Statement ss;
-    ResultSet rs=null;
+    ResultSet rs = null;
     static String query;
     String courseID;
     String courseName;
@@ -32,9 +31,11 @@ public class manageCourses {
     Scanner input = new Scanner(System.in);
     public boolean check;
 //no arg constructor
+
     public manageCourses() {
     }
 //arg constructor
+
     manageCourses(String courseID, String courseName, String parentCourse, int price,
             int room, String branch, int instID, String startDate, String endDate, int startDay,
             int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) {
@@ -64,7 +65,6 @@ public class manageCourses {
     }
     //method to return end date in the form of string
 
-    
     public String getenddate() {
         String x;
         x = "" + endYear + "-" + endMonth + "-" + endDay;
@@ -92,16 +92,15 @@ public class manageCourses {
         return true;
     }
 
-        // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-
+    // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
     public boolean checkinstructor() throws SQLException {
         c = c1.connect();
         ss = c.createStatement();
         try {
-            query = "SELECT COUNT (instructor.instID) AS rowsCount FROM instructor where instructor.instID LIKE '" + this.instID + "'" ;
+            query = "SELECT COUNT (instructor.instID) AS rowsCount FROM instructor where instructor.instID LIKE '" + this.instID + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            if (rs.getInt("rowsCount") == 1 || this.instID==0 ) {
+            if (rs.getInt("rowsCount") == 1 || this.instID == 0) {
 
                 return false;
             } else {
@@ -134,7 +133,7 @@ public class manageCourses {
 //        }
 //        return true;
 //    }
-        // method to change the parent course with null in case of deleting the course
+    // method to change the parent course with null in case of deleting the course
     public void checkparent(String parentCourse) throws SQLException {
         c = c1.connect();
         ss = c.createStatement();
@@ -151,8 +150,10 @@ public class manageCourses {
             } catch (SQLException se) {
 
             }
-        }}
-        // method to add course
+        }
+    }
+    // method to add course
+
     public void addcourse(String courseID, String courseName) throws SQLException {
         try {
             System.out.println("Enter parent Course ID: ");
@@ -179,9 +180,9 @@ public class manageCourses {
             daysOfCourse = input.nextInt();
             System.out.println("Enter Instructor ID: ");
             instID = input.nextInt();
-            while (checkinstructor()== true ) {
-            System.out.println("invalid instructor id enter another one");
-                instID = input.nextInt();  
+            while (checkinstructor() == true) {
+                System.out.println("invalid instructor id enter another one");
+                instID = input.nextInt();
             }
             startDate = getStartdate(startDay, startMonth, startYear);
             endDate = getStartdate(endDay, endMonth, endYear);
@@ -189,9 +190,9 @@ public class manageCourses {
             ss = c.createStatement();
             query = "insert into courses values('" + courseID + "', '" + courseName + "','" + parentCourse + "','" + startDate + "','" + endDate + "','" + daysOfCourse + "','" + price + "','" + room + "','" + branch + "','" + instID + "')";
             ss.execute(query);
-            query = "alter table grades add "+courseID+" int";
-            ss.execute(query);    
-            query = "alter table regesteredCourses add "+courseID+" int";
+            query = "alter table grades add " + courseID + " int";
+            ss.execute(query);
+            query = "alter table regesteredCourses add " + courseID + " int";
             ss.execute(query);
             System.out.println("inserted");
         } catch (SQLException se) {
@@ -206,7 +207,7 @@ public class manageCourses {
         }
 
     }
-        // method to update  parent course
+    // method to update  parent course
 
     public void updateParentCourse(String courseID, String parentCourse) {
         try {
@@ -226,7 +227,7 @@ public class manageCourses {
             }
         }
     }
-            // method to update price of course
+    // method to update price of course
 
     public void updatePriceOfCourse(String courseID, int price) {
         try {
@@ -246,7 +247,7 @@ public class manageCourses {
             }
         }
     }
-        // method to update room 
+    // method to update room 
 
     public void updateRoom(String courseID, int room) {
         try {
@@ -266,7 +267,7 @@ public class manageCourses {
             }
         }
     }
-        // method to update branch
+    // method to update branch
 
     public void updateBranch(String courseID, String branch) {
         try {
@@ -286,7 +287,7 @@ public class manageCourses {
             }
         }
     }
-        // method to update no of days of the course
+    // method to update no of days of the course
 
     public void updateDaysOfCourse(String courseID, int daysOfCourse) {
         try {
@@ -306,7 +307,7 @@ public class manageCourses {
             }
         }
     }
-        // method to update start date of course
+    // method to update start date of course
 
     public void updatestartDate(String courseID, String startDate) {
         try {
@@ -327,6 +328,7 @@ public class manageCourses {
         }
     }
 // method to update end date of course
+
     public void updateendDate(String courseID, String endDate) {
         try {
             c = c1.connect();
@@ -346,15 +348,16 @@ public class manageCourses {
         }
     }
 // method to delete course
+
     public void deleteCourse(String courseID) {
         try {
             c = c1.connect();
             ss = c.createStatement();
             query = "delete from courses where courseID='" + courseID + "'";
             ss.execute(query);
-            query = "alter table regesteredCourses drop column "+courseID+" ";
+            query = "alter table regesteredCourses drop column " + courseID + " ";
             ss.execute(query);
-            query = "alter table grades drop column "+courseID+" ";
+            query = "alter table grades drop column " + courseID + " ";
             ss.execute(query);
             System.out.println("deleted");
             checkparent(courseID);
@@ -372,4 +375,3 @@ public class manageCourses {
     }
 
 }
-

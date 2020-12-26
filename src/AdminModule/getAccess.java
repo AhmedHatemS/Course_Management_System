@@ -52,7 +52,9 @@ public class GetAccess {
     }
 
     public boolean logout() {
-        return false;
+        this.userName = "";
+        this.password ="";
+        return true;
     }
 
     private void UserID() throws ClassNotFoundException, SQLException {

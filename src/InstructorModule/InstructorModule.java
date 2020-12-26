@@ -59,15 +59,15 @@ public class InstructorModule {
             try {
                 instSSN = MainDriver.CourseManagementSystem.loginSSN;
                 courseID = returnInstCourseID();
-               query = "SELECT grades.studID, studFirstName, studLastName, "+ courseID +" FROM student INNER JOIN grades ON student.studID = grades.studID";
+                query = "SELECT grades.studID, studFirstName, studLastName, " + courseID + " FROM student INNER JOIN grades ON student.studID = grades.studID";
                 ResultSet rs = ss.executeQuery(query);
                 if (rs.next()) {
                     System.out.println("_______________________________________________________");
-                    System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n", "ID", "first name", "last name", "Grade of "+ courseID);
+                    System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n", "ID", "first name", "last name", "Grade of " + courseID);
                     do {
                         System.out.println("-------------------------------------------------------");
-                        System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n" , rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
-                        
+                        System.out.printf("|%-5s|%-15s|%-15s|%-15s|\n", rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4));
+
                     } while (rs.next());
                     System.out.println("-------------------------------------------------------");
                 } else {

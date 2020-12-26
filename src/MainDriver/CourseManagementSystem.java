@@ -36,13 +36,12 @@ public class CourseManagementSystem {
         .
         .
          */
-        if (!access.login("UserTeest", "passs")) {
+        if (!access.login(userName, password)) {
             System.out.println("Failed to login, will comtinue as guest.");
         } else {
             loginSSN = access.returnSSN();
             loginRole = access.returnRole();
             loginID = access.returnUserID();
-            instructor.publish();
             /*do {
                 //code to execute
             } while (access.login(userName, password));*/
