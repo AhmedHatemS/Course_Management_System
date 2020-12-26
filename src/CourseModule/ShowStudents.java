@@ -4,39 +4,39 @@ import MainDriver.DBconnect;
 import java.sql.*;
 import java.util.*;
 
-public class ShowInst {
+public class ShowStudents {
 
     static Connection connection;
     static Statement ss;
     static String query;
     static ResultSet r;
-    private String InstructorFName;
-    private String InstructorLName;
+    Connection c1;
+    private String StudentFName;
+    private String StudentLName;
 
-    public ShowInst(String InstFname, String InstLname) {
-        this.InstructorFName = InstFname;
-        this.InstructorLName = InstLname;
+    ShowStudents() {
 
     }
 
-    ShowInst() {
+    ShowStudents(String StuFName, String StuLName) {
+        this.StudentFName = StuFName;
+        this.StudentLName = StuLName;
 
     }
 
     public void ShowData() throws ClassNotFoundException {
         try {
-            ArrayList<ShowInst> List = new ArrayList();
-            connection = DBconnect.connect();
+            ArrayList<ShowStudents> List = new ArrayList();
+            c1 = DBconnect.connect();
             ss = connection.createStatement();
-
-            query = "select * from instructor";
+            query = "select * from student";
             r = ss.executeQuery(query);
             while (r.next()) {
-                List.add(new ShowInst(r.getString("instFName"), r.getString("instlName")));
+                List.add(new ShowStudents(r.getString("studFirstName"), r.getString("studLastName")));
             }
-            System.out.println("Instructors:");
+            System.out.println("Students:");
             for (int i = 0; i < List.size(); i++) {
-                System.out.println("-" + List.get(i).InstructorFName + " " + List.get(i).InstructorLName);
+                System.out.println("-" + List.get(i).StudentFName + " " + List.get(i).StudentLName);
             }
 
         } catch (SQLException se) {
@@ -49,6 +49,6 @@ public class ShowInst {
 
             }
         }
-    }
 
+    }
 }

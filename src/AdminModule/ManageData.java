@@ -60,7 +60,8 @@ public class ManageData {
         }
         return false;
     }
-private boolean foundUserName() throws ClassNotFoundException, SQLException {
+
+    private boolean foundUserName() throws ClassNotFoundException, SQLException {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
@@ -75,6 +76,7 @@ private boolean foundUserName() throws ClassNotFoundException, SQLException {
         }
         return false;
     }
+
     private boolean foundPhone() throws ClassNotFoundException, SQLException {
         c = DBconnect.connect();
         ss = c.createStatement();
@@ -114,7 +116,8 @@ private boolean foundUserName() throws ClassNotFoundException, SQLException {
         }
         return false;
     }
-private boolean foundCourseID() throws ClassNotFoundException, SQLException {
+
+    private boolean foundCourseID() throws ClassNotFoundException, SQLException {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
@@ -131,6 +134,7 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
         }
         return false;
     }
+
     private String checkRole() throws ClassNotFoundException, SQLException {
         c = DBconnect.connect();
         ss = c.createStatement();
@@ -164,6 +168,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 assignUserID();
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -199,6 +211,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -221,9 +241,9 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
             System.out.println("Check the SSN and userName, then try again.");
         } else if (foundPhone() || foundEmail()) {
             System.out.println("Phone number or Email is previously added, Enter another one or login.");
-        } else if(foundCourseID()){
+        } else if (foundCourseID()) {
             System.out.println("Another instructor lecturer the same course, please enter another one.");
-        }else {
+        } else {
             c = DBconnect.connect();
             ss = c.createStatement();
             try {
@@ -238,6 +258,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -255,6 +283,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -272,6 +308,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -289,6 +333,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -306,6 +358,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -325,6 +385,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -342,6 +410,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -359,6 +435,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -376,6 +460,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -393,6 +485,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -413,6 +513,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -430,6 +538,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
             }
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            try {
+                c.close();
+                ss.close();
+                rs.close();
+            } catch (SQLException s) {
+                System.out.println(s);
+            }
         }
     }
 
@@ -448,6 +564,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
             }
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            try {
+                c.close();
+                ss.close();
+                rs.close();
+            } catch (SQLException s) {
+                System.out.println(s);
+            }
         }
     }
 
@@ -466,6 +590,14 @@ private boolean foundCourseID() throws ClassNotFoundException, SQLException {
             }
         } catch (SQLException e) {
             System.out.println(e);
+        } finally {
+            try {
+                c.close();
+                ss.close();
+                rs.close();
+            } catch (SQLException s) {
+                System.out.println(s);
+            }
         }
     }
 }

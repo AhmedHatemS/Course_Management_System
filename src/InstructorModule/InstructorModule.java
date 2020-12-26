@@ -45,6 +45,14 @@ public class InstructorModule {
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }
@@ -74,6 +82,14 @@ public class InstructorModule {
                 }
             } catch (SQLException e) {
                 System.out.println(e);
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                    rs.close();
+                } catch (SQLException s) {
+                    System.out.println(s);
+                }
             }
         }
     }

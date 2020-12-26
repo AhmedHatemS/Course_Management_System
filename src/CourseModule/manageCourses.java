@@ -93,7 +93,7 @@ public class manageCourses {
     }
 
     // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-    public boolean checkinstructor() throws SQLException, ClassNotFoundException {
+    public boolean checkInstructor() throws SQLException, ClassNotFoundException {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
@@ -135,7 +135,7 @@ public class manageCourses {
 //        return true;
 //    }
     // method to change the parent course with null in case of deleting the course
-    public void checkparent(String parentCourse) throws SQLException, ClassNotFoundException {
+    public void checkParent(String parentCourse) throws SQLException, ClassNotFoundException {
         c = DBconnect.connect();
         ss = c.createStatement();
         try {
@@ -157,17 +157,17 @@ public class manageCourses {
 
     public void addcourse(String courseID, String courseName, String parentCourse, int price,
             int room, String branch, int instID, int startDay,
-            int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) throws SQLException {
+            int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) throws SQLException, ClassNotFoundException {
         try {
             startDate = getStartdate(startDay, startMonth, startYear);
             endDate = getStartdate(endDay, endMonth, endYear);
-            c = c1.connect();
+            c = DBconnect.connect();
             ss = c.createStatement();
             query = "insert into courses values('" + courseID + "', '" + courseName + "','" + parentCourse + "','" + startDate + "','" + endDate + "','" + daysOfCourse + "','" + price + "','" + room + "','" + branch + "','" + instID + "')";
             ss.execute(query);
-            query = "alter table grades add "+courseID+" int";
-            ss.execute(query);    
-            query = "alter table regesteredCourses add "+courseID+" int";
+            query = "alter table grades add " + courseID + " int";
+            ss.execute(query);
+            query = "alter table regesteredCourses add " + courseID + " int";
             ss.execute(query);
             System.out.println("inserted");
         } catch (SQLException se) {
@@ -177,7 +177,7 @@ public class manageCourses {
                 c.close();
                 ss.close();
             } catch (SQLException se) {
-System.out.println(se);
+                System.out.println(se);
             }
         }
 
@@ -304,7 +304,7 @@ System.out.println(se);
     }
 // method to update end date of course
 
-    public void updateendDate(String courseID, String endDate) throws ClassNotFoundException {
+    public void updateEndDate(String courseID, String endDate) throws ClassNotFoundException {
         try {
             c = DBconnect.connect();
             ss = c.createStatement();
@@ -335,7 +335,7 @@ System.out.println(se);
             query = "alter table grades drop column " + courseID + " ";
             ss.execute(query);
             System.out.println("deleted");
-            checkparent(courseID);
+            checkParent(courseID);
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         } finally {

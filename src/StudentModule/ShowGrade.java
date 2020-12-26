@@ -11,11 +11,11 @@ public class ShowGrade {
     private int studentID;
     private static Connection c;
 
-    ShowGrade(String CourseID) {
-        courseID = CourseID;
-    }
-
-    public double getGrade() {
-
-    }
+//    ShowGrade(String CourseID) {
+//        courseID = CourseID;
+//    }
+//
+//    public double getGrade() {
+//
+//    }
 }
