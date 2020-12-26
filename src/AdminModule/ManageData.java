@@ -25,6 +25,7 @@ public class ManageData {
     private String nationality;
     private String courseID;
 
+    private DBconnect c1 = new DBconnect();
     private static Connection c;
     private static Statement ss;
     private static ResultSet rs;
@@ -32,7 +33,7 @@ public class ManageData {
 
     private int assignUserID() throws ClassNotFoundException, SQLException {
 
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.SSN LIKE '" + this.SSN + "'";
@@ -46,7 +47,7 @@ public class ManageData {
     }
 
     private boolean foundSSN() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT COUNT(SSN) AS countValSSN FROM mainInfo where mainInfo.SSN LIKE '" + this.SSN + "'";
@@ -62,7 +63,7 @@ public class ManageData {
     }
 
     private boolean foundUserName() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT COUNT(UserName) AS countValUN FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "'";
@@ -78,7 +79,7 @@ public class ManageData {
     }
 
     private boolean foundPhone() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if ("student".equals(checkRole())) {
@@ -98,7 +99,7 @@ public class ManageData {
     }
 
     private boolean foundEmail() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if ("student".equals(checkRole())) {
@@ -118,7 +119,7 @@ public class ManageData {
     }
 
     private boolean foundCourseID() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if ("student".equals(checkRole())) {
@@ -136,7 +137,7 @@ public class ManageData {
     }
 
     private String checkRole() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT mainInfo.role AS countValRole FROM mainInfo where mainInfo.SSN LIKE '" + this.SSN + "'";
@@ -160,7 +161,7 @@ public class ManageData {
         } else if (!"admin".equals(this.role) && !"user".equals(this.role)) {
             System.out.println("This role can't be inserted, check the role and try again.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('" + this.SSN + "' , '" + this.userName + "' , '" + this.password + "' , '" + this.role + "')";
@@ -198,7 +199,7 @@ public class ManageData {
         } else if (foundPhone() || foundEmail()) {
             System.out.println("Phone number or Email is previously added, Enter another one or login.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('"
@@ -244,7 +245,7 @@ public class ManageData {
         } else if (foundCourseID()) {
             System.out.println("Another instructor lecturer the same course, please enter another one.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('"
@@ -276,7 +277,7 @@ public class ManageData {
         if (!foundSSN()) {
             System.out.println("SSN not found, can't update password for non-valid SSN.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE mainInfo SET mainInfo.Password = '" + this.password + "' WHERE SSN = '" + this.SSN + "'";
@@ -301,7 +302,7 @@ public class ManageData {
         if (!foundSSN() || !"student".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't student.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE student SET student.Phone = '" + this.phone + "' WHERE SSN = '" + this.SSN + "'";
@@ -326,7 +327,7 @@ public class ManageData {
         if (!foundSSN() || !"student".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't student.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE student SET student.Email = '" + this.email + "' WHERE SSN = '" + this.SSN + "'";
@@ -351,7 +352,7 @@ public class ManageData {
         if (!foundSSN() || !"student".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't student.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE student SET student.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
@@ -378,7 +379,7 @@ public class ManageData {
         if (!foundSSN() || !"student".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't student.");
         } else {
-            c = DBconnect.connect();
+            c =c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE student SET student.Phone = '" + this.phone + "' , student.Email = '" + this.email + "' ,  student.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
@@ -403,7 +404,7 @@ public class ManageData {
         if (!foundSSN() || !"instructor".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE instructor SET instructor.Phone = '" + this.phone + "' WHERE SSN = '" + this.SSN + "'";
@@ -428,7 +429,7 @@ public class ManageData {
         if (!foundSSN() || !"instructor".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE instructor SET instructor.Email = '" + this.email + "' WHERE SSN = '" + this.SSN + "'";
@@ -453,7 +454,7 @@ public class ManageData {
         if (!foundSSN() || !"instructor".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE instructor SET instructor.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
@@ -478,7 +479,7 @@ public class ManageData {
         if (!foundSSN() || !"instructor".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE instructor SET instructor.CourseID = '" + this.courseID + "' WHERE SSN = '" + this.SSN + "'";
@@ -506,7 +507,7 @@ public class ManageData {
         if (!foundSSN() || !"instructor".equals(checkRole())) {
             System.out.println("SSN in wrong or isn't instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 query = "UPDATE instructor SET instructor.Phone = '" + this.phone + "' , instructor.Email = '" + this.email + "' ,  instructor.Address = '" + this.address + "' , instructor.CourseID = '" + this.courseID + "' WHERE SSN = '" + this.SSN + "'";
@@ -527,7 +528,7 @@ public class ManageData {
 
     public void deleteUser(String SSN) throws ClassNotFoundException, SQLException {
         this.SSN = SSN;
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if (foundSSN() && !"student".equals(checkRole()) && !"instructor".equals(checkRole())) {
@@ -551,7 +552,7 @@ public class ManageData {
 
     public void deleteStudent(String SSN) throws ClassNotFoundException, SQLException {
         this.SSN = SSN;
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if (foundSSN() && "student".equals(checkRole())) {
@@ -577,7 +578,7 @@ public class ManageData {
 
     public void deleteInstructor(String SSN) throws ClassNotFoundException, SQLException {
         this.SSN = SSN;
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             if (foundSSN() && "instructor".equals(checkRole())) {
