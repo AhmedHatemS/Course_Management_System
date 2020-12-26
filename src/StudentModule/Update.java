@@ -1,7 +1,6 @@
 package StudentModule;
 
 import MainDriver.DBconnect;
-import static MainDriver.DBconnect.connect;
 import static java.lang.System.in;
 import java.sql.*;
 import java.util.*;
@@ -16,9 +15,8 @@ public class Update {
 
     public void UpdatePhone() throws ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");
@@ -43,9 +41,8 @@ public class Update {
     //Function Update Name
     public void UpdateName() throws ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");
@@ -71,9 +68,8 @@ public class Update {
 
     public void UpdateEmail() throws ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");
@@ -99,9 +95,8 @@ public class Update {
 
     public void UpdateAddress() throws ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");
@@ -127,9 +122,8 @@ public class Update {
 
     public void UpdateNationality() throws ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");
@@ -153,9 +147,8 @@ public class Update {
 
     public void UpdateAll() throws SQLException, SQLException, SQLException, ClassNotFoundException {
 
-        DBconnect c1 = new DBconnect();
+        c = DBconnect.connect();
         try {
-            c = c1.connect();
             ss = c.createStatement();
             Scanner s = new Scanner(System.in);
             System.out.println("StudentID:");

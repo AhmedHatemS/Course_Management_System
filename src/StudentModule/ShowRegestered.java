@@ -67,7 +67,7 @@ public class ShowRegestered {
                     System.out.print(colNames[i] + " ");
                 }
             }
-            System.out.printLN("");
+            System.out.println("");
         }
     }
 }

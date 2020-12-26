@@ -16,12 +16,10 @@ public class showcourses {
     //Function show All courses
 
     public void showcourse() throws ClassNotFoundException {
-        DBconnect c1 = new DBconnect();
-
+        c = DBconnect.connect();
         try {
-            ArrayList<elem> list = new ArrayList<elem>();
+            ArrayList<elem> list = new ArrayList<>();
 
-            c = c1.connect();
             ss = c.createStatement();
             query = "select * from courses";
             rs = ss.executeQuery(query);

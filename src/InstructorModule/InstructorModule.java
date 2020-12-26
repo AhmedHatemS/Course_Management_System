@@ -2,7 +2,6 @@ package InstructorModule;
 
 import AdminModule.*;
 import MainDriver.*;
-import static MainDriver.CourseManagementSystem.*;
 import java.util.*;
 import java.sql.*;
 
