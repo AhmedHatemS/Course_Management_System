@@ -1,5 +1,6 @@
 package StudentModule;
 
+import MainDriver.DBconnect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,13 +13,14 @@ public class showcourses {
     static Statement ss;
     static String query;
       static ResultSet rs;
-      public void showcourse()
+   //Function show All courses
+      public void showcourse() throws ClassNotFoundException
       {
-     conn c1=new conn();
+     DBconnect c1=new  DBconnect();
      
           try {
               ArrayList<elem> list=new ArrayList<elem>();
-           // ArraytList<elem> list=new ArraytList<elem>();
+         
             c=c1.connect();
             ss=c.createStatement(); 
             query="select * from courses";
