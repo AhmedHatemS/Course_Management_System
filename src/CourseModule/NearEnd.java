@@ -11,7 +11,7 @@ import java.time.temporal.ChronoUnit;
 
 public class NearEnd {
 
-    static Connection connection;
+    static Connection c;
     static Statement ss;
     static String query;
     static ResultSet r;
@@ -35,8 +35,8 @@ public class NearEnd {
         try {
             ArrayList<NearEnd> List = new ArrayList();
 
-            connection = DBconnect.connect();
-            ss = connection.createStatement();
+            c = c1.connect();
+            ss = c.createStatement();
 
             query = "select * from courses";
             r = ss.executeQuery(query);
@@ -63,7 +63,7 @@ public class NearEnd {
             System.out.println(se.getMessage());
         } finally {
             try {
-                connection.close();
+                c.close();
                 ss.close();
             } catch (SQLException se) {
 
@@ -72,3 +72,4 @@ public class NearEnd {
     }
 
 }
+
