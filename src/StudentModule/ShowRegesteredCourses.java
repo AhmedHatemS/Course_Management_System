@@ -3,10 +3,10 @@ package StudentModule;
 import MainDriver.DBconnect;
 import java.sql.*;
 
-public class ShowRegestered {
+public class ShowRegesteredCourses {
 
     private static String[] colNames = new String[1000];
-    int studentID;
+    private int studentID;
     private static Connection c;
     private static Statement ss;
     private static ResultSet rs;
