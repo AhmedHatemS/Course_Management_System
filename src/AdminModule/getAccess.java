@@ -10,6 +10,8 @@ public class GetAccess {
     private int ID;
     private String SSN;
     private String role;
+    
+    private DBconnect c1 = new DBconnect();
     private static Connection c;
     private static Statement ss;
     private static ResultSet rs;
@@ -24,7 +26,7 @@ public class GetAccess {
         this.password = password;
 
         //connection
-        c = DBconnect.connect();
+        c = c1.connect();
         System.out.println("Connection stablished successfully.");
         //code
         ss = c.createStatement();
@@ -62,7 +64,7 @@ public class GetAccess {
 
     private void UserID() throws ClassNotFoundException, SQLException {
 
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT mainInfo.UserId AS id FROM mainInfo WHERE mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
@@ -84,7 +86,7 @@ public class GetAccess {
 
     private void SSN() throws ClassNotFoundException, SQLException {
         //connection
-        c = DBconnect.connect();
+        c = c1.connect();
         //code
         ss = c.createStatement();
         try {
@@ -107,7 +109,7 @@ public class GetAccess {
 
     private void role() throws ClassNotFoundException, SQLException {
         //connection
-        c = DBconnect.connect();
+        c = c1.connect();
         //code
         ss = c.createStatement();
         try {
