@@ -6,7 +6,8 @@ import java.util.*;
 import java.sql.*;
 
 public class InstructorModule {
-
+    
+    private DBconnect c1 = new DBconnect();
     private static Connection c;
     private static Statement ss;
     private static ResultSet rs;
@@ -17,7 +18,7 @@ public class InstructorModule {
     private String instSSN;
 
     private String returnInstCourseID() throws ClassNotFoundException, SQLException {
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT CourseID AS cid FROM instructor WHERE instructor.SSN LIKE '" + instSSN + "'";
@@ -36,7 +37,7 @@ public class InstructorModule {
         if (!"instructor".equals(CourseManagementSystem.loginRole)) {
             System.out.println("Not instructor or SSN not found.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 instSSN = MainDriver.CourseManagementSystem.loginSSN;
@@ -61,7 +62,7 @@ public class InstructorModule {
         if (!"instructor".equals(CourseManagementSystem.loginRole)) {
             System.out.println("Not instructor.");
         } else {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             try {
                 instSSN = MainDriver.CourseManagementSystem.loginSSN;
