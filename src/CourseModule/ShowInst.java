@@ -6,7 +6,8 @@ import java.util.*;
 
 public class ShowInst {
 
-    static Connection connection;
+    DBconnect c1 = new DBconnect();
+    static Connection c;
     static Statement ss;
     static String query;
     static ResultSet r;
@@ -26,8 +27,8 @@ public class ShowInst {
     public void ShowData() throws ClassNotFoundException {
         try {
             ArrayList<ShowInst> List = new ArrayList();
-            connection = DBconnect.connect();
-            ss = connection.createStatement();
+            c = c1.connect();
+            ss = c.createStatement();
 
             query = "select * from instructor";
             r = ss.executeQuery(query);
@@ -43,7 +44,7 @@ public class ShowInst {
             System.out.println(se.getMessage());
         } finally {
             try {
-                connection.close();
+                c.close();
                 ss.close();
             } catch (SQLException se) {
 
@@ -52,3 +53,4 @@ public class ShowInst {
     }
 
 }
+
