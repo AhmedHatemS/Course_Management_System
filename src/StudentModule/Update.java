@@ -6,10 +6,12 @@ import java.util.*;
 
 public class Update {
 
-    static Connection c;
-    static Statement ss;
-    static String query;
-    static ResultSet rs;
+    private static Connection c;
+    private static Statement ss;
+    private static String query;
+    private static ResultSet rs;
+    private DBconnect c1 = new DBconnect();
+
     private int id;
     private String password;
     private String FName;
@@ -18,7 +20,6 @@ public class Update {
     private String Email;
     private String Address;
     private String Nationality;
-    private DBconnect c1 = new DBconnect();
 
     public void UpdatePhone(int id, String phone) throws ClassNotFoundException {
         this.id = id;
