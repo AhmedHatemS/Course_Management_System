@@ -18,13 +18,13 @@ public class Update {
     private String Email;
     private String Address;
     private String Nationality;
+    private DBconnect c1 = new DBconnect();
 
     public void UpdatePhone(int id, String phone) throws ClassNotFoundException {
         this.id = id;
         this.phone = phone;
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set Phone='" + this.phone + "' where studID='" + this.id + "'";
             ss.execute(query);
@@ -47,9 +47,8 @@ public class Update {
         this.FName = FName;
         this.LName = LName;
 
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set studFirstName='" + this.FName + "',studLastName='" + this.LName + "'where studID='" + this.id + "'";
             ss.execute(query);
@@ -71,9 +70,8 @@ public class Update {
         this.id = id;
         this.Email = Email;
 
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set Email='" + this.Email + "' where studID='" + this.id + "'";
             //query ="update student set SSN=345788996791 where studID=1";
@@ -95,9 +93,8 @@ public class Update {
     public void UpdateAddress(int id, String Address) throws ClassNotFoundException {
         this.id = id;
         this.Address = Address;
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set Address='" + this.Address + "' where studID='" + this.id + "'";
             ss.execute(query);
@@ -118,9 +115,8 @@ public class Update {
     public void UpdateNationality(int id, String Nationality) throws ClassNotFoundException {
         this.id = id;
         this.Nationality = Nationality;
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set Nationality='" + this.Nationality + "' where studID='" + this.id + "'";
             ss.execute(query);
@@ -146,9 +142,8 @@ public class Update {
         this.Nationality = Nationality;
         this.phone = phone;
 
-        DBconnect c1 = new DBconnect();
         try {
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             query = "update student set studFirstName='" + this.FName + "',studLastName='" + this.LName + "',Nationality='" + this.Nationality + "',Address='" + this.Address + "',Phone='" + this.phone + "',Email='" + this.Email + "'where studID='" + this.id + "'";
             ss.execute(query);
@@ -169,11 +164,9 @@ public class Update {
         this.id = id;
         this.password = password;
 
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
-            c = DBconnect.connect();
-            ss = c.createStatement();
             query = "update mainInfo set mainInfo.Password='" + this.password + "' where UserID='" + this.id + "'";
             ss.execute(query);
         } catch (SQLException e) {
