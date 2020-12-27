@@ -11,11 +11,11 @@ import java.time.temporal.ChronoUnit;
 
 public class NearEnd {
 
-    static Connection c;
-    static Statement ss;
-    static String query;
-    static ResultSet r;
-    DBconnect c1 = new DBconnect();
+    private static Connection c;
+    private static Statement ss;
+    private static String query;
+    private static ResultSet r;
+    private DBconnect c1 = new DBconnect();
     private String EndDate;
     private String CourseName;
 
@@ -72,4 +72,3 @@ public class NearEnd {
     }
 
 }
-
