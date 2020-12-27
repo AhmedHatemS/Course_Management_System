@@ -7,10 +7,10 @@ import java.util.*;
 public class ShowInst {
 
     DBconnect c1 = new DBconnect();
-    static Connection c;
-    static Statement ss;
-    static String query;
-    static ResultSet r;
+    private static Connection c;
+    private static Statement ss;
+    private static String query;
+    private static ResultSet r;
     private String InstructorFName;
     private String InstructorLName;
 
@@ -53,4 +53,3 @@ public class ShowInst {
     }
 
 }
-
