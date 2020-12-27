@@ -6,11 +6,11 @@ import java.util.*;
 
 public class ShowStudents {
 
-    static Connection connection;
+    static Connection c;
     static Statement ss;
     static String query;
     static ResultSet r;
-    Connection c1;
+    DBconnect c1 = new DBconnect();
     private String StudentFName;
     private String StudentLName;
 
@@ -27,8 +27,8 @@ public class ShowStudents {
     public void ShowData() throws ClassNotFoundException {
         try {
             ArrayList<ShowStudents> List = new ArrayList();
-            c1 = DBconnect.connect();
-            ss = connection.createStatement();
+            c = c1.connect();
+            ss = c.createStatement();
             query = "select * from student";
             r = ss.executeQuery(query);
             while (r.next()) {
@@ -43,7 +43,7 @@ public class ShowStudents {
             System.out.println(se.getMessage());
         } finally {
             try {
-                connection.close();
+                c.close();
                 ss.close();
             } catch (SQLException se) {
 
