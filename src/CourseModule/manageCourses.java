@@ -28,7 +28,6 @@ public class manageCourses {
     private int endMonth;
     private int endYear;
     private int daysOfCourse;
-    Scanner input = new Scanner(System.in);
 //no arg constructor
 
     public manageCourses() {
