@@ -11,10 +11,11 @@ public class ShowRegesteredCourses {
     private static Statement ss;
     private static ResultSet rs;
     private static String query;
+    private DBconnect c1 = new DBconnect();
 
     private boolean foundStudentID() throws ClassNotFoundException, SQLException {
 
-        c = DBconnect.connect();
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT COUNT (mainInfo.UserId) AS id FROM mainInfo WHERE mainInfo.UserId LIKE '" + this.studentID + "'";
@@ -29,8 +30,8 @@ public class ShowRegesteredCourses {
         return false;
     }
 
-    private static void saveCoursesNames() throws SQLException, ClassNotFoundException {
-        c = DBconnect.connect();
+    private  void saveCoursesNames() throws SQLException, ClassNotFoundException {
+        c = c1.connect();
         ss = c.createStatement();
         try {
             query = "SELECT INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'regesteredCourses'";
@@ -57,7 +58,7 @@ public class ShowRegesteredCourses {
         this.studentID = studentID;
         if (foundStudentID()) {
             saveCoursesNames();
-            c = DBconnect.connect();
+            c = c1.connect();
             ss = c.createStatement();
             for (int i = 0; colNames[i] != null; i++) {
                 query = "SELECT COUNT (regesteredCourses." + colNames[i] + ") AS f FROM regesteredCourses WHERE studID = '" + this.studentID + "' AND regesteredCourses." + colNames[i] + " = '1'";
