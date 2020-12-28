@@ -15,7 +15,7 @@ create table instructor
 (
 instID int UNIQUE,
 instFName varchar(100) NOT NULL,
-instlName varchar(100) NOT NULL,
+instLName varchar(100) NOT NULL,
 SSN varchar(14) NOT NULL UNIQUE,
 DOB Date NOT NULL,
 Phone varchar(15) UNIQUE NOT NULL,
@@ -99,6 +99,7 @@ select * from instructor
 select * from courses
 select * from regesteredCourses
 SELECT * FROM grades
-SELECT grades.studID, studFirstName, studLastName, CS111 FROM student, grades 
+SELECT * FROM surveyMainTable
+SELECT * FROM surveyResponses
 SELECT INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'student'
-ALTER TABLE regesteredCourses ADD IS213 INT
+UPDATE courses SET instID = '3' WHERE courseID = 'CS111'

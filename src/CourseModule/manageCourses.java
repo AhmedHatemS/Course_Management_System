@@ -56,21 +56,21 @@ public class ManageCourses {
     }
     //method to return start date in the form of string
 
-    public String getStartDate(int startDay, int startMonth, int startYear) {
+    private String getStartDate(int startDay, int startMonth, int startYear) {
         String s;
         s = "" + startYear + "-" + startMonth + "-" + startDay;
         return s;
     }
     //method to return end date in the form of string
 
-    public String getEndDate(int endDay, int endMonth, int endYear) {
+    private String getEndDate(int endDay, int endMonth, int endYear) {
         String x;
         x = "" + endYear + "-" + endMonth + "-" + endDay;
         return x;
     }
 
     // method to check if the entered course exist or not return false if it is existed and true if not 
-    private boolean checkCourses(String courseID, String courseName) throws SQLException, ClassNotFoundException {
+    public boolean checkCourses(String courseID, String courseName) throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {
@@ -91,7 +91,7 @@ public class ManageCourses {
     }
 
     // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-    private boolean checkInstructor() throws SQLException, ClassNotFoundException {
+    public boolean checkInstructor() throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {

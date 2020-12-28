@@ -19,6 +19,8 @@ public class CourseManagementSystem {
     public static int loginID;
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        //connection
+        DBconnect c = new DBconnect();
         //create object of clases
         GetAccess ga = new GetAccess();
         ManageData md = new ManageData();
@@ -35,6 +37,7 @@ public class CourseManagementSystem {
         String DoB = "";
 
         //main driver code
+        System.out.println("Connection stablished successfully.");
         /*
         .
         .
@@ -49,16 +52,25 @@ public class CourseManagementSystem {
             loginRole = ga.returnRole();
             loginID = ga.returnUserID();
             
+            //mc.addCourse("CS111", "Intro to CS", "null", 500, 1, "Cairo", 0, 18, 10, 2020, 8, 1, 2020, 81);
+            //mc.deleteCourse("CSA");
             
-            mc.addCourse("CS111", "Intro to CS", "null", 500, 1, "Cairo", 0, 18, 10, 2020, 8, 1, 2020, 81);
-            mc.addCourse("IS111", "Intro to IS", "null", 500, 2, "Cairo", 0, 18, 10, 2020, 8, 1, 2020, 81);
-            
-            
+            //mc.checkCourses("CS111", "Intro to CS");
+            //md.addInstructor("AyaElRahman", "AyaElRahman", "Aya", "ElRahman", "23456789123401", "1988-10-10", "23456789123401", "AyaElRahman@hu.com", "cairo", "egypt", "IS111");
+            //md.addStudent("AhmedHatem", "ahmedhatem", "Ahmed", "Hatem", "34567891234012", "2001-12-21", "34567890123412", "ahmedhatem@fci.com", "Giza", "Egypt");
+            //mc.updateRoom("CS111", 4);
+            //scd.ShowInstructors();
+            //scd.ShowStudents();
+            //mc.updateParentCourse("CS111", "IS111");
+            //sct.ShowNearToStart();
+            //sct.ShowNearToEnd();
+            //student module///////////////////////////////////////
+            //instructor module///////////////////////////////////
             
             
             /*do {
                 //code to execute
-            } while (access.login(userName, password));*/
+            } while (!access.logout());*/
         }
     }
 

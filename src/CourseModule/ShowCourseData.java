@@ -34,11 +34,12 @@ public class ShowCourseData {
             query = "select * from student";
             r = ss.executeQuery(query);
             while (r.next()) {
-                List.add(new ShowCourseData(r.getString("studentFirstName"), r.getString("studLastName")));
+                List.add(new ShowCourseData(r.getString("studFirstName"), r.getString("studLastName")));
             }
             System.out.println("Students:");
+            int counter=0;
             for (int i = 0; i < List.size(); i++) {
-                System.out.println("-" + List.get(i).FName + " " + List.get(i).LName);
+                System.out.println((++counter) +"- " + List.get(i).FName + " " + List.get(i).LName);
             }
 
         } catch (SQLException se) {
@@ -66,8 +67,9 @@ public class ShowCourseData {
                 List.add(new ShowCourseData(r.getString("instFName"), r.getString("instlName")));
             }
             System.out.println("Instructors:");
+            int counter = 0;
             for (int i = 0; i < List.size(); i++) {
-                System.out.println("-" + List.get(i).FName + " " + List.get(i).LName);
+                System.out.println((++counter) +"- " + List.get(i).FName + " " + List.get(i).LName);
             }
 
         } catch (SQLException se) {

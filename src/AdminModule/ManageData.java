@@ -57,7 +57,7 @@ public class ManageData {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return false;
     }
@@ -73,7 +73,7 @@ public class ManageData {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return false;
     }
@@ -93,7 +93,7 @@ public class ManageData {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return false;
     }
@@ -113,7 +113,7 @@ public class ManageData {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return false;
     }
@@ -131,7 +131,7 @@ public class ManageData {
                 return true;
             }
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return false;
     }
@@ -145,7 +145,7 @@ public class ManageData {
             rs.next();
             return rs.getString("countValRole");
         } catch (SQLException e) {
-            System.out.println(e);
+            //System.out.println(e);
         }
         return "";
     }
@@ -167,6 +167,7 @@ public class ManageData {
                 query = "INSERT INTO mainInfo(SSN, UserName, Password, role) VALUES ('" + this.SSN + "' , '" + this.userName + "' , '" + this.password + "' , '" + this.role + "')";
                 ss.execute(query);
                 assignUserID();
+                System.out.println("Added successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -210,6 +211,7 @@ public class ManageData {
                         + this.SSN + "' , '" + this.DoB + "' , '" + this.phone + "' , '" + this.email
                         + "' , '" + this.address + "' , '" + this.nationality + "')";
                 ss.execute(query);
+                System.out.println("Added successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -257,6 +259,9 @@ public class ManageData {
                         + "' , '" + this.SSN + "' , '" + this.DoB + "' , '" + this.phone + "' , '" + this.email
                         + "' , '" + this.address + "' , '" + this.nationality + "' , '" + this.courseID + "')";
                 ss.execute(query);
+                query = "UPDATE courses SET instID = '"+ assignUserID() +"' WHERE courseID = '"+ this.courseID +"'";
+                ss.execute(query);
+                System.out.println("Added successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -282,6 +287,7 @@ public class ManageData {
             try {
                 query = "UPDATE mainInfo SET mainInfo.Password = '" + this.password + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -307,6 +313,7 @@ public class ManageData {
             try {
                 query = "UPDATE student SET student.Phone = '" + this.phone + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -332,6 +339,7 @@ public class ManageData {
             try {
                 query = "UPDATE student SET student.Email = '" + this.email + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -357,6 +365,7 @@ public class ManageData {
             try {
                 query = "UPDATE student SET student.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -384,6 +393,7 @@ public class ManageData {
             try {
                 query = "UPDATE student SET student.Phone = '" + this.phone + "' , student.Email = '" + this.email + "' ,  student.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -409,6 +419,7 @@ public class ManageData {
             try {
                 query = "UPDATE instructor SET instructor.Phone = '" + this.phone + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -434,6 +445,7 @@ public class ManageData {
             try {
                 query = "UPDATE instructor SET instructor.Email = '" + this.email + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -459,6 +471,7 @@ public class ManageData {
             try {
                 query = "UPDATE instructor SET instructor.Address = '" + this.address + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -484,6 +497,7 @@ public class ManageData {
             try {
                 query = "UPDATE instructor SET instructor.CourseID = '" + this.courseID + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -512,6 +526,7 @@ public class ManageData {
             try {
                 query = "UPDATE instructor SET instructor.Phone = '" + this.phone + "' , instructor.Email = '" + this.email + "' ,  instructor.Address = '" + this.address + "' , instructor.CourseID = '" + this.courseID + "' WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Updated successfully");
             } catch (SQLException e) {
                 System.out.println(e);
             } finally {
@@ -534,6 +549,7 @@ public class ManageData {
             if (foundSSN() && !"student".equals(checkRole()) && !"instructor".equals(checkRole())) {
                 query = "DELETE mainInfo WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Deleted successfully");
             } else {
                 System.out.println("Record with this SSN not found or can't be deleted.");
             }
@@ -560,6 +576,7 @@ public class ManageData {
                 ss.execute(query);
                 query = "delete student where SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Deleted successfully");
             } else {
                 System.out.println("Record with this SSN not found or can't be deleted.");
             }
@@ -586,6 +603,7 @@ public class ManageData {
                 ss.execute(query);
                 query = "delete instructor where SSN = '" + this.SSN + "'";
                 ss.execute(query);
+                System.out.println("Deleted successfully");
             } else {
                 System.out.println("Record with this SSN not found or can't be deleted.");
             }

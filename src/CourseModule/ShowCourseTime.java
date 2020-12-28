@@ -41,7 +41,7 @@ public class ShowCourseTime {
             while (r.next()) {
                 List.add(new ShowCourseTime(r.getString("endDate"), r.getString("courseName")));
             }
-
+            int counter=0;
             for (int i = 0; i < List.size(); i++) {
 
                 LocalDate firstDate;
@@ -50,7 +50,7 @@ public class ShowCourseTime {
                 long days = ChronoUnit.DAYS.between(date, firstDate);
                 if (date.compareTo(firstDate) < 0) {
                     if (days <= 7) {
-                        System.out.println("-" + List.get(i).CourseName);
+                        System.out.println((++counter) +"- " + List.get(i).CourseName);
                     }
                 }
 
@@ -80,7 +80,7 @@ public class ShowCourseTime {
             while (r.next()) {
                 List.add(new ShowCourseTime(r.getString("startDate"), r.getString("courseName")));
             }
-
+            int counter = 0;
             for (int i = 0; i < List.size(); i++) {
 
                 LocalDate firstDate;
@@ -89,7 +89,7 @@ public class ShowCourseTime {
                 long days = ChronoUnit.DAYS.between(firstDate, date);
                 if (date.compareTo(firstDate) < 0) {
                     if (days <= 7) {
-                        System.out.println("-" + List.get(i).CourseName);
+                        System.out.println((++counter)+"- " + List.get(i).CourseName);
                     }
                 }
 
