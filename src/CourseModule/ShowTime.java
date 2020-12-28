@@ -39,7 +39,7 @@ public class ShowTime {
             r = ss.executeQuery(query);
             System.out.println("Courses near to end are:");
             while (r.next()) {
-                List.add(new ShowTime(r.getString("Date"), r.getString("courseName")));
+                List.add(new ShowTime(r.getString("endDate"), r.getString("courseName")));
             }
 
             for (int i = 0; i < List.size(); i++) {
@@ -78,7 +78,7 @@ public class ShowTime {
             r = ss.executeQuery(query);
             System.out.println("Courses near to start are:");
             while (r.next()) {
-                List.add(new ShowTime(r.getString("Date"), r.getString("courseName")));
+                List.add(new ShowTime(r.getString("startDate"), r.getString("courseName")));
             }
 
             for (int i = 0; i < List.size(); i++) {
