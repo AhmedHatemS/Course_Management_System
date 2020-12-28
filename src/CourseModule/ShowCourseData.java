@@ -4,7 +4,7 @@ import MainDriver.*;
 import java.sql.*;
 import java.util.*;
 
-public class ShowData {
+public class ShowCourseData {
 
     private static Connection c;
     private static Statement ss;
@@ -17,25 +17,24 @@ public class ShowData {
     private String FName;
     private String LName;
 
-    ShowData() {
-
-    }
-
-    ShowData(String FName1, String LName1) {
+    ShowCourseData(String FName1, String LName1) {
         this.FName = FName1;
         this.LName = LName1;
 
     }
 
+    public ShowCourseData() {
+    }
+
     public void ShowStudents() {
         try {
-            ArrayList<ShowData> List = new ArrayList();
+            ArrayList<ShowCourseData> List = new ArrayList();
             c = c1.connect();
             ss = c.createStatement();
             query = "select * from student";
             r = ss.executeQuery(query);
             while (r.next()) {
-                List.add(new ShowData(r.getString("studentFirstName"), r.getString("studLastName")));
+                List.add(new ShowCourseData(r.getString("studentFirstName"), r.getString("studLastName")));
             }
             System.out.println("Students:");
             for (int i = 0; i < List.size(); i++) {
@@ -57,14 +56,14 @@ public class ShowData {
 
     public void ShowInstructors() {
         try {
-            ArrayList<ShowData> List = new ArrayList();
+            ArrayList<ShowCourseData> List = new ArrayList();
             c = c1.connect();
             ss = c.createStatement();
 
             query = "select * from instructor";
             r = ss.executeQuery(query);
             while (r.next()) {
-                List.add(new ShowData(r.getString("instFName"), r.getString("instlName")));
+                List.add(new ShowCourseData(r.getString("instFName"), r.getString("instlName")));
             }
             System.out.println("Instructors:");
             for (int i = 0; i < List.size(); i++) {

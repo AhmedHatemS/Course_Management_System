@@ -8,7 +8,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
-public class ShowTime {
+public class ShowCourseTime {
     private static Connection c;
     private static Statement ss;
     private static String query;
@@ -17,11 +17,11 @@ public class ShowTime {
     private String Date;
     private String CourseName;
     
-     public ShowTime(String Date, String CourseName) {
+     public ShowCourseTime(String Date, String CourseName) {
         this.Date = Date;
         this.CourseName = CourseName;
     }
-      public ShowTime() {
+      public ShowCourseTime() {
     }
       Calendar calendar = Calendar.getInstance();
 
@@ -30,7 +30,7 @@ public class ShowTime {
 
     public void ShowNearToEnd() throws ClassNotFoundException {
         try {
-            ArrayList<ShowTime> List = new ArrayList();
+            ArrayList<ShowCourseTime> List = new ArrayList();
 
             c = c1.connect();
             ss = c.createStatement();
@@ -39,7 +39,7 @@ public class ShowTime {
             r = ss.executeQuery(query);
             System.out.println("Courses near to end are:");
             while (r.next()) {
-                List.add(new ShowTime(r.getString("endDate"), r.getString("courseName")));
+                List.add(new ShowCourseTime(r.getString("endDate"), r.getString("courseName")));
             }
 
             for (int i = 0; i < List.size(); i++) {
@@ -69,7 +69,7 @@ public class ShowTime {
     }
         public void ShowNearToStart() throws ClassNotFoundException {
         try {
-            ArrayList<ShowTime> List = new ArrayList();
+            ArrayList<ShowCourseTime> List = new ArrayList();
 
             c = c1.connect();
             ss = c.createStatement();
@@ -78,7 +78,7 @@ public class ShowTime {
             r = ss.executeQuery(query);
             System.out.println("Courses near to start are:");
             while (r.next()) {
-                List.add(new ShowTime(r.getString("startDate"), r.getString("courseName")));
+                List.add(new ShowCourseTime(r.getString("startDate"), r.getString("courseName")));
             }
 
             for (int i = 0; i < List.size(); i++) {

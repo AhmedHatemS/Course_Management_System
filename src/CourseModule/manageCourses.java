@@ -5,7 +5,7 @@ import static java.lang.System.exit;
 import java.sql.*;
 import java.util.*;
 
-public class manageCourses {
+public class ManageCourses {
 
     private DBconnect c1 = new DBconnect();
     private static Connection c;
@@ -30,11 +30,11 @@ public class manageCourses {
     private int daysOfCourse;
 //no arg constructor
 
-    public manageCourses() {
+    public ManageCourses() {
     }
 //arg constructor
 
-    manageCourses(String courseID, String courseName, String parentCourse, int price,
+    ManageCourses(String courseID, String courseName, String parentCourse, int price,
             int room, String branch, int instID, String startDate, String endDate, int startDay,
             int startMonth, int startYear, int endDay, int endMonth, int endYear, int daysOfCourse) {
         this.courseID = courseID;
@@ -70,7 +70,7 @@ public class manageCourses {
     }
 
     // method to check if the entered course exist or not return false if it is existed and true if not 
-    public boolean checkCourses(String courseID, String courseName) throws SQLException, ClassNotFoundException {
+    private boolean checkCourses(String courseID, String courseName) throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {
@@ -91,7 +91,7 @@ public class manageCourses {
     }
 
     // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-    public boolean checkInstructor() throws SQLException, ClassNotFoundException {
+    private boolean checkInstructor() throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {
@@ -133,7 +133,7 @@ public class manageCourses {
 //        return true;
 //    }
     // method to change the parent course with null in case of deleting the course
-    public void checkParent(String parentCourse) throws SQLException, ClassNotFoundException {
+    private void checkParent(String parentCourse) throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {
