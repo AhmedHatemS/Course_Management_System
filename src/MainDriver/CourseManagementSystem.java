@@ -268,7 +268,8 @@ public class CourseManagementSystem {
         do {
             System.out.println("Choose an operation to do\n"
                     + "1- add grade.\n2- publish grades.\n"
-                    + "3- logout.");
+                    + "3- show all students.\n"         
+                    + "a- logout.");
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -282,6 +283,9 @@ public class CourseManagementSystem {
                     instructor.publish();
                     break;
                 case 3:
+                    scd.ShowStudents();
+                    break;
+                case 4:
                     con = 0;
                     break;
                 default:
