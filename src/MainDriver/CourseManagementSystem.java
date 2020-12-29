@@ -261,17 +261,17 @@ public class CourseManagementSystem {
                 case 17:
                     do {
                     System.out.println("Enter Course ID: ");
-                    courseID = input.nextLine();
+                    courseID = input.next();
                     System.out.println("Enter Course Name: ");
-                    courseName = input.nextLine();
+                    courseName = input.next();
                     if (mc.checkCourses(courseID, courseName) == false) {
                         System.out.println("This course already exists.If you want to enter another course press yes");
-                        ch = input.nextLine();
+                        ch = input.next();
                     } else {
                         System.out.println("Enter parent Course ID: ");
-                        parentCourse = input.nextLine();
+                        parentCourse = input.next();
                         System.out.println("Enter Branch: ");
-                        branch = input.nextLine();
+                        branch = input.next();
                         System.out.println("Enter Course Price: ");
                         price = input.nextInt();
                         System.out.println("Enter Course room: ");
@@ -300,63 +300,63 @@ public class CourseManagementSystem {
                                 room, branch, instID, startDay,
                                 startMonth, startYear, endDay, endMonth, endYear, daysOfCourse);
                         System.out.println("If you want to enter another course press yes");
-                        ch = input.nextLine();
+                        ch = input.next();
                     }
                 } while (ch.compareTo(sh) == 0);
 
                 break; 
                 case 18:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 mc.deleteCourse(courseID);
                 break;
                 case 19:
                     System.out.println("Enter Parent Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter the new parent Course: ");
-                parentCourse = input.nextLine();
+                parentCourse = input.next();
                 mc.updateParentCourse(courseID, parentCourse);
                     break;
                 case 20:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter new room number: ");
                 room = input.nextInt();
                 mc.updateRoom(courseID, room);
                 break;
                 case 21:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter new branch: ");
-                branch = input.nextLine();
+                branch = input.next();
                 mc.updateBranch(courseID, branch);
                 break;
                 case 22:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter new price: ");
                 price = input.nextInt();
                 mc.updatePriceOfCourse(courseID, price);
                 break;
                 case 23:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter days of course: ");
                 daysOfCourse = input.nextInt();
                 mc.updateDaysOfCourse(courseID, daysOfCourse);
                     break;
                 case 24:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter new Start in the form of date yyyy-mm-dd: ");
-                startDate = input.nextLine();
+                startDate = input.next();
                 mc.updateStartDate(courseID, startDate);
                 break;
                 case 25:
                     System.out.println("Enter Course ID: ");
-                courseID = input.nextLine();
+                courseID = input.next();
                 System.out.println("Enter new end date in the form of yyyy-mm-dd: ");
-                endDate = input.nextLine();
+                endDate = input.next();
                 mc.updateEndDate(courseID, endDate);
                 break;
                 case 26:
