@@ -13,6 +13,8 @@ public class CourseModuleMain {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Scanner input = new Scanner(System.in);
         manageCourses m = new manageCourses();
+        ShowCourseData d=new ShowCourseData();
+        ShowCourseTime t=new ShowCourseTime();
         String courseID;
         String courseName;
         String parentCourse;
@@ -169,22 +171,26 @@ public class CourseModuleMain {
             case 10: {
                 System.out.println("You choose operation 10 (Show all students)");
                 System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                d.ShowStudents();
 
                 break;
             }
             case 11: {
                 System.out.println("You choose operation 11 (Show all Instructors)");
                 System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                d.ShowInstructors();
                 break;
             }
             case 12: {
                 System.out.println("You choose operation 12 (Display courses that near to start)");
                 System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                t.ShowNearToStart();
                 break;
             }
             case 13: {
                 System.out.println("You choose operation 13 (Display courses that near to end)");
                 System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                t.ShowNearToEnd();
                 break;
             }
 
