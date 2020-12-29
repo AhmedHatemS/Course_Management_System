@@ -84,7 +84,7 @@ public class CourseManagementSystem {
         String SSN, username, password, role, firstName, lastName, DoB, phone, email, address, nationality, courseID,courseName,parentCourse,branch,
                  startDate,endDate, ch,sh = "yes";
          
-        int con = 1,price,room,instID,startDate,startMonth,startYear,endDay,endMonth,endYear,daysOfCourse;
+        int con = 1,price,room,instID,startDay,startMonth,startYear,endDay,endMonth,endYear,daysOfCourse;
         do {
             System.out.println("Choose an operation to do\n"
                     + "1- add user.\n2- update password.\n"
@@ -264,7 +264,7 @@ public class CourseManagementSystem {
                     courseID = input.nextLine();
                     System.out.println("Enter Course Name: ");
                     courseName = input.nextLine();
-                    if (m.checkCourses(courseID, courseName) == false) {
+                    if (mc.checkCourses(courseID, courseName) == false) {
                         System.out.println("This course already exists.If you want to enter another course press yes");
                         ch = input.nextLine();
                     } else {
@@ -292,11 +292,11 @@ public class CourseManagementSystem {
                         daysOfCourse = input.nextInt();
                         System.out.println("Enter Instructor ID: ");
                         instID = input.nextInt();
-                        while (m.checkInstructor() == true) {
+                        while (mc.checkInstructor() == true) {
                             System.out.println("invalid instructor id enter another one");
                             instID = input.nextInt();
                         }
-                        md.addCourse(courseID, courseName, parentCourse, price,
+                        mc.addCourse(courseID, courseName, parentCourse, price,
                                 room, branch, instID, startDay,
                                 startMonth, startYear, endDay, endMonth, endYear, daysOfCourse);
                         System.out.println("If you want to enter another course press yes");
@@ -308,56 +308,56 @@ public class CourseManagementSystem {
                 case 18:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
-                md.deleteCourse(courseID);
+                mc.deleteCourse(courseID);
                 break;
                 case 19:
                     System.out.println("Enter Parent Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter the new parent Course: ");
                 parentCourse = input.nextLine();
-                md.updateParentCourse(courseID, parentCourse);
+                mc.updateParentCourse(courseID, parentCourse);
                     break;
                 case 20:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter new room number: ");
                 room = input.nextInt();
-                md.updateRoom(courseID, room);
+                mc.updateRoom(courseID, room);
                 break;
                 case 21:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter new branch: ");
                 branch = input.nextLine();
-                md.updateBranch(courseID, branch);
+                mc.updateBranch(courseID, branch);
                 break;
                 case 22:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter new price: ");
                 price = input.nextInt();
-                md.updatePriceOfCourse(courseID, price);
+                mc.updatePriceOfCourse(courseID, price);
                 break;
                 case 23:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter days of course: ");
                 daysOfCourse = input.nextInt();
-                md.updateDaysOfCourse(courseID, daysOfCourse);
+                mc.updateDaysOfCourse(courseID, daysOfCourse);
                     break;
                 case 24:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter new Start in the form of date yyyy-mm-dd: ");
                 startDate = input.nextLine();
-                md.updateStartDate(courseID, startDate);
+                mc.updateStartDate(courseID, startDate);
                 break;
                 case 25:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
                 System.out.println("Enter new end date in the form of yyyy-mm-dd: ");
                 endDate = input.nextLine();
-                md.updateEndDate(courseID, endDate);
+                mc.updateEndDate(courseID, endDate);
                 break;
                 case 26:
                     con = 0;
