@@ -82,7 +82,8 @@ public class CourseManagementSystem {
 
     private static void admin() throws ClassNotFoundException, SQLException {
         String SSN, username, password, role, firstName, lastName, DoB, phone, email, address, nationality, courseID,courseName,parentCourse,branch,
-                 startDate,endDate;
+                 startDate,endDate, ch,sh = "yes";
+         
         int con = 1,price,room,instID,startDate,startMonth,startYear,endDay,endMonth,endYear,daysOfCourse;
         do {
             System.out.println("Choose an operation to do\n"
@@ -257,6 +258,53 @@ public class CourseManagementSystem {
                     SSN = input.next();
                     md.deleteUser(SSN);
                     break;
+                case 17:
+                    do {
+                    System.out.println("Enter Course ID: ");
+                    courseID = input.nextLine();
+                    System.out.println("Enter Course Name: ");
+                    courseName = input.nextLine();
+                    if (m.checkCourses(courseID, courseName) == false) {
+                        System.out.println("This course already exists.If you want to enter another course press yes");
+                        ch = input.nextLine();
+                    } else {
+                        System.out.println("Enter parent Course ID: ");
+                        parentCourse = input.nextLine();
+                        System.out.println("Enter Branch: ");
+                        branch = input.nextLine();
+                        System.out.println("Enter Course Price: ");
+                        price = input.nextInt();
+                        System.out.println("Enter Course room: ");
+                        room = input.nextInt();
+                        System.out.println("Enter Course Start day: ");
+                        startDay = input.nextInt();
+                        System.out.println("Enter Course Start month: ");
+                        startMonth = input.nextInt();
+                        System.out.println("Enter Course Start year: ");
+                        startYear = input.nextInt();
+                        System.out.println("Enter Course End day: ");
+                        endDay = input.nextInt();
+                        System.out.println("Enter Course End month: ");
+                        endMonth = input.nextInt();
+                        System.out.println("Enter Course End year: ");
+                        endYear = input.nextInt();
+                        System.out.println("Enter Days of course: ");
+                        daysOfCourse = input.nextInt();
+                        System.out.println("Enter Instructor ID: ");
+                        instID = input.nextInt();
+                        while (m.checkInstructor() == true) {
+                            System.out.println("invalid instructor id enter another one");
+                            instID = input.nextInt();
+                        }
+                        m.addCourse(courseID, courseName, parentCourse, price,
+                                room, branch, instID, startDay,
+                                startMonth, startYear, endDay, endMonth, endYear, daysOfCourse);
+                        System.out.println("If you want to enter another course press yes");
+                        ch = input.nextLine();
+                    }
+                } while (ch.compareTo(sh) == 0);
+
+                break; 
                 case 18:
                     System.out.println("Enter Course ID: ");
                 courseID = input.nextLine();
