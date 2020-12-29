@@ -211,6 +211,10 @@ public class ManageData {
                         + this.SSN + "' , '" + this.DoB + "' , '" + this.phone + "' , '" + this.email
                         + "' , '" + this.address + "' , '" + this.nationality + "')";
                 ss.execute(query);
+                query = " INSERT INTO regesteredCourses(studID) VALUES ('" + assignUserID() + "')";
+                ss.execute(query);
+                query = " INSERT INTO grades(studID) VALUES ('" + assignUserID() + "')";
+                ss.execute(query);
                 System.out.println("Added successfully");
             } catch (SQLException e) {
                 System.out.println(e);
@@ -575,6 +579,10 @@ public class ManageData {
                 query = "DELETE mainInfo WHERE SSN = '" + this.SSN + "'";
                 ss.execute(query);
                 query = "delete student where SSN = '" + this.SSN + "'";
+                ss.execute(query);
+                query = "delete regesteredCourses where studID = '" + assignUserID() + "'";
+                ss.execute(query);
+                query = "delete grades where studID = '" + assignUserID() + "'";
                 ss.execute(query);
                 System.out.println("Deleted successfully");
             } else {

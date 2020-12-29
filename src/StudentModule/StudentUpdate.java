@@ -1,4 +1,5 @@
 package StudentModule;
+
 import MainDriver.DBconnect;
 import java.sql.*;
 import java.util.*;
@@ -27,30 +28,6 @@ public class StudentUpdate {
             c = c1.connect();
             ss = c.createStatement();
             query = "update student set Phone='" + this.phone + "' where studID='" + this.id + "'";
-            ss.execute(query);
-            System.out.println("Updated");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
-            }
-
-        }
-    }
-
-    //Function Update Name
-    public void UpdateName(int ID, String FName, String LName) throws ClassNotFoundException {
-        this.id = ID;
-        this.FName = FName;
-        this.LName = LName;
-
-        try {
-            c = c1.connect();
-            ss = c.createStatement();
-            query = "update student set studFirstName='" + this.FName + "',studLastName='" + this.LName + "'where studID='" + this.id + "'";
             ss.execute(query);
             System.out.println("Updated");
         } catch (SQLException ex) {
@@ -110,30 +87,8 @@ public class StudentUpdate {
 
         }
     }
-    //Function to update Nationality
-
-    public void UpdateNationality(int id, String Nationality) throws ClassNotFoundException {
-        this.id = id;
-        this.Nationality = Nationality;
-        try {
-            c = c1.connect();
-            ss = c.createStatement();
-            query = "update student set Nationality='" + this.Nationality + "' where studID='" + this.id + "'";
-            ss.execute(query);
-            System.out.println("Updated");
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
-            }
-
-        }
-    }
-
-    public void UpdateAll(int id, String Address, String Email, String FName, String LName, String Nationality, String phone) throws SQLException, SQLException, SQLException, ClassNotFoundException {
+    
+    public void UpdateAll(int id, String Address, String Email, String phone) throws SQLException, SQLException, SQLException, ClassNotFoundException {
         this.id = id;
         this.Address = Address;
         this.Email = Email;

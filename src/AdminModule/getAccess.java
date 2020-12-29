@@ -10,7 +10,7 @@ public class GetAccess {
     private int ID;
     private String SSN;
     private String role;
-    
+
     private DBconnect c1 = new DBconnect();
     private static Connection c;
     private static Statement ss;
@@ -22,12 +22,8 @@ public class GetAccess {
     }
 
     public boolean login(String userName, String password) throws SQLException, ClassNotFoundException {
-        return true;
-    }
-
-    public boolean logout() throws SQLException, ClassNotFoundException {
-        this.userName = "";
-        this.password = "";
+        this.userName = userName;
+        this.password = password;
         //connection
         c = c1.connect();
         //code
@@ -36,11 +32,11 @@ public class GetAccess {
             query = "SELECT COUNT (mainInfo.UserId) AS rowsCount FROM mainInfo where mainInfo.UserName LIKE '" + this.userName + "' and mainInfo.Password LIKE '" + this.password + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            if (rs.getInt("rowsCount") == 0) {//succeeded
+            if (rs.getInt("rowsCount") == 1) {//succeeded
                 UserID();
                 SSN();
                 role();
-                System.out.println("Bye.");
+                System.out.println("Your login succeeded.");
                 return true;
             }
         } catch (SQLException e) {

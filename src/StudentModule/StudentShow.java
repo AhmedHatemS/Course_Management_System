@@ -58,6 +58,46 @@ public class StudentShow {
     public StudentShow() {
     }
 
+    public void showGrade(int studentID, String CourseID) throws SQLException, ClassNotFoundException {
+        if (checkInfo(CourseID)) {
+            try {
+                DBconnect c1 = new DBconnect();
+                c = c1.connect();
+                query = "select " + courseID + " from grades where studID ='" + studentID + "'";
+                r = ss.executeQuery(query);
+                r.next();
+                System.out.println(r.getInt("" + courseID + ""));
+            } catch (SQLException e) {
+
+            } finally {
+                try {
+                    c.close();
+                    ss.close();
+                } catch (SQLException s) {
+
+                }
+            }
+        }
+    }
+
+    public void showRegesteredCourses(int studentID) throws SQLException, ClassNotFoundException {
+        this.studentID = studentID;
+        if (foundStudentID()) {
+            saveCoursesNames();
+            c = c1.connect();
+            ss = c.createStatement();
+            for (int i = 0; colNames[i] != null; i++) {
+                query = "SELECT COUNT (regesteredCourses." + colNames[i] + ") AS f FROM regesteredCourses WHERE studID = '" + this.studentID + "' AND regesteredCourses." + colNames[i] + " = '1'";
+                rs = ss.executeQuery(query);
+                rs.next();
+                if (rs.getInt("f") == 1) {
+                    System.out.print(colNames[i] + " ");
+                }
+            }
+            System.out.println("");
+        }
+    }
+
     public void showMDCourse() throws ClassNotFoundException {
         try {
             ArrayList<StudentShow> list = new ArrayList<StudentShow>();
@@ -540,46 +580,6 @@ public class StudentShow {
         } else {
             courseID = CourseID;
             return true;
-        }
-    }
-
-    public void showGrade(String CourseID) throws SQLException, ClassNotFoundException {
-        if (checkInfo(CourseID)) {
-            try {
-                DBconnect c1 = new DBconnect();
-                c = c1.connect();
-                query = "select " + courseID + " from grades where studID ='" + studentID + "'";
-                r = ss.executeQuery(query);
-                r.next();
-                System.out.println(r.getInt("" + courseID + ""));
-            } catch (SQLException e) {
-
-            } finally {
-                try {
-                    c.close();
-                    ss.close();
-                } catch (SQLException s) {
-
-                }
-            }
-        }
-    }
-
-    public void showRegesteredCourses(int studentID) throws SQLException, ClassNotFoundException {
-        this.studentID = studentID;
-        if (foundStudentID()) {
-            saveCoursesNames();
-            c = c1.connect();
-            ss = c.createStatement();
-            for (int i = 0; colNames[i] != null; i++) {
-                query = "SELECT COUNT (regesteredCourses." + colNames[i] + ") AS f FROM regesteredCourses WHERE studID = '" + this.studentID + "' AND regesteredCourses." + colNames[i] + " = '1'";
-                rs = ss.executeQuery(query);
-                rs.next();
-                if (rs.getInt("f") == 1) {
-                    System.out.print(colNames[i] + " ");
-                }
-            }
-            System.out.println("");
         }
     }
 }
