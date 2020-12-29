@@ -296,7 +296,7 @@ public class CourseManagementSystem {
                             System.out.println("invalid instructor id enter another one");
                             instID = input.nextInt();
                         }
-                        m.addCourse(courseID, courseName, parentCourse, price,
+                        md.addCourse(courseID, courseName, parentCourse, price,
                                 room, branch, instID, startDay,
                                 startMonth, startYear, endDay, endMonth, endYear, daysOfCourse);
                         System.out.println("If you want to enter another course press yes");
