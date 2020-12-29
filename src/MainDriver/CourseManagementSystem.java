@@ -28,6 +28,7 @@ public class CourseManagementSystem {
     private static StudentShow sShow = new StudentShow();
     private static StudentUpdate sUpdate = new StudentUpdate();
     private static RegesterCourse rc = new RegesterCourse();
+    
 
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         //connection
@@ -297,8 +298,9 @@ public class CourseManagementSystem {
             System.out.println("Choose an operation to do\n"
                     + "1- update phone.\n2- update email.\n3- update address\n4- update password.\n5- update all data.\n"
                     + "6- register a course.\n"
-                    + "7- show all courses.\n8- show main details of courses.\n9- show registered courses.\n10- show course grade.\n"
-                    + "11- logout.");
+                    + "7- show all courses.\n8- show main details of courses.\n9- show registered courses.\n10- show course grade.\n 11-show all instructors.\n"
+                    + "12-show courses that are near to start.\n 13-show courses that near to end.\n" 
+                    + "14- logout.");
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -350,6 +352,14 @@ public class CourseManagementSystem {
                     sShow.showGrade(loginID, courseID);
                     break;
                 case 11:
+                    scd.ShowInstructors();
+                    break;
+                case 12:
+                    sct.ShowNearToStart();
+                    break;
+                case 13:
+                    sct.ShowNearToEnd();
+                case 14:
                     con = 0;
                     break;
                 default:
