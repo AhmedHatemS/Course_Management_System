@@ -58,7 +58,7 @@ public class StudentShow {
     public StudentShow() {
     }
 
-    public void showGrade(int studentID, String CourseID) throws SQLException, ClassNotFoundException {
+    public void showGrade(String CourseID) throws SQLException, ClassNotFoundException {
         if (checkInfo(CourseID)) {
             try {
                 DBconnect c1 = new DBconnect();
