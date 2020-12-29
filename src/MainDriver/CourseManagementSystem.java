@@ -37,6 +37,7 @@ public class CourseManagementSystem {
         //main variables
         String userName = "", password = "", role = "", SSN = "", firstName = "", lastName = "",
                 phone = "", email = "", address = "", nationality = "", courseID = "";
+                   
         int day, month, year, ID;
         String DoB = "";
         //main driver code
@@ -80,8 +81,9 @@ public class CourseManagementSystem {
     }
 
     private static void admin() throws ClassNotFoundException, SQLException {
-        String SSN, username, password, role, firstName, lastName, DoB, phone, email, address, nationality, courseID;
-        int con = 1;
+        String SSN, username, password, role, firstName, lastName, DoB, phone, email, address, nationality, courseID,courseName,parentCourse,branch,
+                 startDate,endDate;
+        int con = 1,price,room,instID,startDate,startMonth,startYear,endDay,endMonth,endYear,daysOfCourse;
         do {
             System.out.println("Choose an operation to do\n"
                     + "1- add user.\n2- update password.\n"
@@ -90,7 +92,11 @@ public class CourseManagementSystem {
                     + "9- add student.\n10- update student's phone.\n11- update student's email.\n12- update student's address."
                     + "13- update student's all data.\n"
                     + "14- delete user.\n15- delete instructor.\n16- delete student.\n"
-                    + "17- logout.");
+                    + "17- create new course or add parent course.\n"
+                    + "18- delete course.\n19- update parent course\n20- update course room number.\n "
+                    + "21- update branch.\n22- update price of course.\n23- update number of daos.\n"
+                    + "24- update start date.\n25- update end date.\n"
+                    + "26- logout.");
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -251,7 +257,61 @@ public class CourseManagementSystem {
                     SSN = input.next();
                     md.deleteUser(SSN);
                     break;
-                case 17:
+                case 18:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                md.deleteCourse(courseID);
+                break;
+                case 19:
+                    System.out.println("Enter Parent Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter the new parent Course: ");
+                parentCourse = input.nextLine();
+                md.updateParentCourse(courseID, parentCourse);
+                    break;
+                case 20:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter new room number: ");
+                room = input.nextInt();
+                md.updateRoom(courseID, room);
+                break;
+                case 21:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter new branch: ");
+                branch = input.nextLine();
+                md.updateBranch(courseID, branch);
+                break;
+                case 22:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter new price: ");
+                price = input.nextInt();
+                md.updatePriceOfCourse(courseID, price);
+                break;
+                case 23:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter days of course: ");
+                daysOfCourse = input.nextInt();
+                md.updateDaysOfCourse(courseID, daysOfCourse);
+                    break;
+                case 24:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter new Start in the form of date yyyy-mm-dd: ");
+                startDate = input.nextLine();
+                md.updateStartDate(courseID, startDate);
+                break;
+                case 25:
+                    System.out.println("Enter Course ID: ");
+                courseID = input.nextLine();
+                System.out.println("Enter new end date in the form of yyyy-mm-dd: ");
+                endDate = input.nextLine();
+                md.updateEndDate(courseID, endDate);
+                break;
+                case 26:
                     con = 0;
                     break;
                 default:
