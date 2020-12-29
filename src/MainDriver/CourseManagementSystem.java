@@ -411,8 +411,8 @@ public class CourseManagementSystem {
                     + "1- update phone.\n2- update email.\n3- update address\n4- update password.\n5- update all data.\n"
                     + "6- register a course.\n"
                     + "7- show all courses.\n8- show main details of courses.\n9- show registered courses.\n10- show course grade.\n 11-show all instructors.\n"
-                    + "12-show courses that are near to start.\n 13-show courses that near to end.\n" 
-                    + "14- logout.");
+                    + "12- show courses that are near to start.\n 13-show courses that near to end.\n" 
+                    + "14- Take A Survey.\n15- logout.");
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
@@ -461,7 +461,7 @@ public class CourseManagementSystem {
                 case 10:
                     System.out.print("Enter course ID: ");
                     courseID = input.next();
-                    sShow.showGrade(loginID, courseID);
+                    sShow.showGrade(courseID);
                     break;
                 case 11:
                     scd.ShowInstructors();
@@ -471,7 +471,13 @@ public class CourseManagementSystem {
                     break;
                 case 13:
                     sct.ShowNearToEnd();
+                    break;
                 case 14:
+                    System.out.println("Enter Course ID: ");
+                    courseID = input.next();
+                    sShow.TakeASurvey(courseID);
+                    break;
+                case 15:
                     con = 0;
                     break;
                 default:
