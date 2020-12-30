@@ -122,14 +122,7 @@ public class ManageCourses {
             System.out.println("updated");
         } catch (SQLException se) {
             System.out.println(se.getMessage());
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException e) {
-                System.out.println(e);
-            }
-        }
+        } 
     }
     // method to add course
 
