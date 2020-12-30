@@ -20,7 +20,7 @@ public class StudentShow {
     private String StartDate;
     private String EndDate;
     private DBconnect c1 = new DBconnect();
-    private String[] questions = {"The course was helpful.", "The instructor is enthusiastic and knowledgable about the course material.", "The instructor cleared up points of confusions.", "The course was effictively organized.", "The course developed my ability to read and think critically."};
+    private String[] questions = {"Q1-The course was helpful.", "Q2-The instructor is enthusiastic and knowledgable about the course material.", "Q3-The instructor cleared up points of confusions.", "Q4-The course was effictively organized.", "Q5-The course developed my ability to read and think critically."};
     private String choice1 = "1) Strongly Agree";
     private String choice2 = "2) Argee";
     private String choice3 = "3) No Opinion";
@@ -480,7 +480,7 @@ public class StudentShow {
 
     public void TakeASurvey(int StudentID,String CourseID) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
-        StudentShow s = new StudentShow();
+        StudentShow s = new StudentShow(CourseID);
         s.studentID = StudentID;
         s.courseID = CourseID;
         if (!s.foundStudentID()) {
@@ -493,7 +493,7 @@ public class StudentShow {
         } 
         else {
             System.out.println("Survey Started!");
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~");
             System.out.println();
 
             System.out.println(s.getQuestion1());
@@ -531,7 +531,7 @@ public class StudentShow {
             s.setResponse5(input.nextInt());
             System.out.println();
 
-            System.out.println("~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("~~~~~~~");
             System.out.println("SURVEY ENDED!");
             System.out.println("THANK YOU! ^.^");
 
