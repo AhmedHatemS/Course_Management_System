@@ -150,7 +150,7 @@ public class ManageData {
         return "";
     }
 
-    public void addUser(String SSN, String userName, String password, String role) throws ClassNotFoundException, SQLException {
+    public void addUser(String SSN, String userName, String password) throws ClassNotFoundException, SQLException {
         this.SSN = SSN;
         this.userName = userName;
         this.password = password;

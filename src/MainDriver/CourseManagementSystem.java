@@ -87,7 +87,7 @@ public class CourseManagementSystem {
         int con = 1,price,room,instID,startDay,startMonth,startYear,endDay,endMonth,endYear,daysOfCourse;
         do {
             System.out.println("Choose an operation to do\n"
-                    + "1- add user.\n2- update password.\n"
+                    + "1- add admin/user.\n2- update password.\n"
                     + "3- add instructor.\n4- update instructor's phone.\n5- update instructor's email.\n6- update instructor's address."
                     + "7- update instructor's courseID.\n8- update instructor's all data."
                     + "9- add student.\n10- update student's phone.\n11- update student's email.\n12- update student's address."
