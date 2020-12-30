@@ -31,7 +31,7 @@ public class InstructorModule {
         return "..";
     }
 
-    public void addGrade(int studID, float grade) throws ClassNotFoundException, SQLException {
+    public void addGrade(int studID, int grade) throws ClassNotFoundException, SQLException {
         this.studentID = studID;
         this.grade = grade;
         if (!"instructor".equals(CourseManagementSystem.loginRole)) {
@@ -42,7 +42,7 @@ public class InstructorModule {
             try {
                 instSSN = MainDriver.CourseManagementSystem.loginSSN;
                 courseID = returnInstCourseID();
-                query = "UPDATE grades SET  " + courseID + " = '" + this.grade + "' WHERE grades.studID LIKE '" + this.studentID + "'";
+                query = "UPDATE grades SET  " + courseID + " = '" +grade + "' WHERE grades.studID LIKE '" + this.studentID + "'";
                 ss.execute(query);
             } catch (SQLException e) {
                 System.out.println(e);

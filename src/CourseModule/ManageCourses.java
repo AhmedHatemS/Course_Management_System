@@ -91,14 +91,14 @@ public class ManageCourses {
     }
 
     // method to check if the entered instructor id exist or not in the table of instructor return false if it is existed and true if not 
-    public boolean checkInstructor() throws SQLException, ClassNotFoundException {
+    public boolean checkInstructor(int instID) throws SQLException, ClassNotFoundException {
         c = c1.connect();
         ss = c.createStatement();
         try {
-            query = "SELECT COUNT (instructor.instID) AS rowsCount FROM instructor where instructor.instID LIKE '" + this.instID + "'";
+            query = "SELECT COUNT (instructor.instID) AS rowsCount FROM instructor where instructor.instID LIKE '" + instID + "'";
             rs = ss.executeQuery(query);
             rs.next();
-            if (rs.getInt("rowsCount") == 1 || this.instID == 0) {
+            if (rs.getInt("rowsCount") == 1 || instID == 0) {
 
                 return false;
             } else {
@@ -328,4 +328,3 @@ public class ManageCourses {
     }
 
 }
-
