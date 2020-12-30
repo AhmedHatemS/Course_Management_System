@@ -58,7 +58,8 @@ public class StudentShow {
     public StudentShow() {
     }
 
-    public void showGrade(String CourseID) throws SQLException, ClassNotFoundException {
+    public void showGrade(int StudentID,String CourseID) throws SQLException, ClassNotFoundException {
+        studentID = StudentID;
         if (checkInfo(CourseID)) {
             try {
                 DBconnect c1 = new DBconnect();
@@ -182,13 +183,6 @@ public class StudentShow {
 
     }
 
-    private void returnStudentID() {
-        studentID = X.returnUserID();
-    }
-
-    private void returnR() throws SQLException, ClassNotFoundException {
-        role = X.returnRole();
-    }
 
     private boolean foundStudentID() throws ClassNotFoundException, SQLException {
         DBconnect c1 = new DBconnect();
@@ -484,21 +478,20 @@ public class StudentShow {
         }
     }
 
-    public void TakeASurvey(String courseID) throws ClassNotFoundException, SQLException {
+    public void TakeASurvey(int StudentID,String CourseID) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
-        StudentShow s = new StudentShow(courseID);
-        s.returnStudentID();
-        s.returnR();
+        StudentShow s = new StudentShow(CourseID);
+        studentID = StudentID;
+        courseID = CourseID;
         if (!s.foundStudentID()) {
             System.out.println("StudentID Not Found!");
             return;
-        } else if (!"student".equals(s.role)) {
-            System.out.println("Not Student.");
-            return;
-        } else if (!s.checkRegesteredCourses(courseID)) {
+        }
+        else if (!s.checkRegesteredCourses(CourseID)) {
             System.out.println("CourseID Not Found!");
             return;
-        } else {
+        } 
+        else {
             System.out.println("Survey Started!");
             System.out.println("~~~~~~");
             System.out.println();
@@ -547,18 +540,15 @@ public class StudentShow {
     }
 
     private boolean checkInfo(String CourseID) throws SQLException, ClassNotFoundException {
-        returnStudentID();
-        returnR();
         if (!foundStudentID()) {
             System.out.println("StudentID not found!");
             return false;
-        } else if (!"student".equals(role)) {
-            System.out.println("Not Student!");
-            return false;
-        } else if (!checkRegesteredCourses(CourseID)) {
+        }
+        else if (!checkRegesteredCourses(CourseID)) {
             System.out.println("INVALID COURSEID!");
             return false;
-        } else {
+        } 
+        else {
             courseID = CourseID;
             return true;
         }
