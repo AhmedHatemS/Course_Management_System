@@ -459,13 +459,7 @@ public class StudentShow {
             ss.execute(query);
         } catch (SQLException e) {
 
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
-            }
-        }
+        } 
 
         try {
             DBconnect c1 = new DBconnect();
@@ -477,13 +471,7 @@ public class StudentShow {
             surveyID = r.getInt("surveyID");
         } catch (SQLException e) {
 
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
-            }
-        }
+        } 
 
         try {
             DBconnect c1 = new DBconnect();
@@ -493,12 +481,6 @@ public class StudentShow {
             ss.execute(query);
         } catch (SQLException e) {
 
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException s) {
-            }
         }
     }
 
