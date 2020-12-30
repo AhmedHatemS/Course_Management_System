@@ -111,27 +111,7 @@ public class ManageCourses {
         return true;
     }
 
-    // this code to check if the choosen instructor teach the choosen course  
-//    public boolean checkinstructorCourse(String courseID) throws SQLException {
-//        c = c1.connect();
-//        String x;
-//        ss = c.createStatement();
-//        try {
-//            query = "SELECT CourseID FROM instructor where instID LIKE '" +this.instID + "'";
-//            rs=ss.executeQuery(query);
-//            x=rs.getString("CourseID");
-//            if (x==courseID) {
-//
-//                return false;
-//            } else {
-//                return true;
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println(e);
-//        }
-//        return true;
-//    }
+    
     // method to change the parent course with null in case of deleting the course
     private void checkParent(String parentCourse) throws SQLException, ClassNotFoundException {
         c = c1.connect();
