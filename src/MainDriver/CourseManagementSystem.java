@@ -493,7 +493,7 @@ public class CourseManagementSystem {
     private static void student() throws ClassNotFoundException, SQLException {
         int ID = loginID;
         String phone, email, address, password, courseID;
-        int con = 1;
+        int con = 1,studentID;
         do {
             System.out.println("Choose an operation to do\n"
                     + "1- update phone.\n2- update email.\n3- update address\n4- update password.\n5- update all data.\n"
@@ -504,7 +504,7 @@ public class CourseManagementSystem {
             int choice = input.nextInt();
             switch (choice) {
                 case 1:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 1 (To update phone number)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter phone number: ");
@@ -512,7 +512,7 @@ public class CourseManagementSystem {
                     sUpdate.UpdatePhone(ID, phone);
                     break;
                 case 2:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 2 (To update email)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter email: ");
@@ -520,7 +520,7 @@ public class CourseManagementSystem {
                     sUpdate.UpdateEmail(ID, email);
                     break;
                 case 3:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 3 (To update address)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter address: ");
@@ -528,7 +528,7 @@ public class CourseManagementSystem {
                     sUpdate.UpdateAddress(ID, address);
                     break;
                 case 4:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 4 (To update password)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter password: ");
@@ -536,7 +536,7 @@ public class CourseManagementSystem {
                     sUpdate.updatePassword(ID, password);
                     break;
                 case 5:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 5 (To update all data)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter phone number: ");
@@ -548,7 +548,7 @@ public class CourseManagementSystem {
                     sUpdate.UpdateAll(ID, address, email, phone);
                     break;
                 case 6:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 6 (To register a course.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.print("Enter course ID: ");
@@ -556,59 +556,61 @@ public class CourseManagementSystem {
                     rc.regesterCourse(ID, courseID);
                     break;
                 case 7:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 7 (To show all courses)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     sShow.showAllCourse();
                     break;
                 case 8:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 8 (To show main details of courses.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     sShow.showMDCourse();
                     break;
                 case 9:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 9 (To show registered courses.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     sShow.showRegesteredCourses(loginID);
                     break;
                 case 10:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 10 (To show course grade.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-                    System.out.print("Enter course ID: ");
+                    System.out.print("Enter your ID and course ID: ");
+                    studentID = input.nextInt();
                     courseID = input.next();
-                    sShow.showGrade(courseID);
+                    sShow.showGrade(studentID,courseID);
                     break;
                 case 11:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 11 (To show all instructors.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     scd.ShowInstructors();
                     break;
                 case 12:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 12 (To show courses that are near to start.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     sct.ShowNearToStart();
                     break;
                 case 13:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 13 (To show courses that near to end.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     sct.ShowNearToEnd();
                     break;
                 case 14:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 14 (To Take A Survey.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-                    System.out.println("Enter Course ID: ");
+                    System.out.println("Enter your ID and Course ID: ");
+                    studentID = input.nextInt();
                     courseID = input.next();
-                    sShow.TakeASurvey(courseID);
+                    sShow.TakeASurvey(studentID,courseID);
                     break;
                 case 15:
-                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
+                    System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 15 (To logout goodbye ♥♥♥)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     con = 0;
