@@ -481,8 +481,8 @@ public class StudentShow {
     public void TakeASurvey(int StudentID,String CourseID) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
         StudentShow s = new StudentShow();
-        studentID = StudentID;
-        courseID = CourseID;
+        s.studentID = StudentID;
+        s.courseID = CourseID;
         if (!s.foundStudentID()) {
             System.out.println("StudentID Not Found!");
             return;
@@ -493,7 +493,7 @@ public class StudentShow {
         } 
         else {
             System.out.println("Survey Started!");
-            System.out.println("~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~");
             System.out.println();
 
             System.out.println(s.getQuestion1());
@@ -531,7 +531,7 @@ public class StudentShow {
             s.setResponse5(input.nextInt());
             System.out.println();
 
-            System.out.println("~~~~~~~");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~");
             System.out.println("SURVEY ENDED!");
             System.out.println("THANK YOU! ^.^");
 
