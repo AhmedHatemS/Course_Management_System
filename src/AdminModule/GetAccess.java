@@ -64,15 +64,7 @@ public class GetAccess {
             this.ID = rs.getInt("id");
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
-            try {
-                c.close();
-                ss.close();
-                rs.close();
-            } catch (SQLException s) {
-                System.out.println(s);
-            }
-        }
+        } 
     }
 
     private void SSN() throws ClassNotFoundException, SQLException {
@@ -87,14 +79,6 @@ public class GetAccess {
             this.SSN = rs.getString("SSN");
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
-            try {
-                c.close();
-                ss.close();
-                rs.close();
-            } catch (SQLException s) {
-                System.out.println(s);
-            }
         }
     }
 
@@ -110,15 +94,7 @@ public class GetAccess {
             this.role = rs.getString("role");
         } catch (SQLException e) {
             System.out.println(e);
-        } finally {
-            try {
-                c.close();
-                ss.close();
-                rs.close();
-            } catch (SQLException s) {
-                System.out.println(s);
-            }
-        }
+        } 
     }
 
     public int returnUserID() {
