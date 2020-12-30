@@ -480,7 +480,7 @@ public class StudentShow {
 
     public void TakeASurvey(int StudentID,String CourseID) throws ClassNotFoundException, SQLException {
         Scanner input = new Scanner(System.in);
-        StudentShow s = new StudentShow(CourseID);
+        StudentShow s = new StudentShow();
         studentID = StudentID;
         courseID = CourseID;
         if (!s.foundStudentID()) {
