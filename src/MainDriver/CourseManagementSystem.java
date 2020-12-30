@@ -577,8 +577,9 @@ public class CourseManagementSystem {
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 10 (To show course grade.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-                    System.out.print("Enter your ID and course ID: ");
+                    System.out.print("Enter your ID: ");
                     studentID = input.nextInt();
+                    System.out.print("Enter course ID: ");
                     courseID = input.next();
                     sShow.showGrade(studentID,courseID);
                     break;
@@ -604,8 +605,9 @@ public class CourseManagementSystem {
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 14 (To Take A Survey.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-                    System.out.println("Enter your ID and Course ID: ");
+                    System.out.println("Enter your ID : ");
                     studentID = input.nextInt();
+                    System.out.println("Enter Course ID: "); 
                     courseID = input.next();
                     sShow.TakeASurvey(studentID,courseID);
                     break;
