@@ -83,18 +83,22 @@ public class StudentShow {
     public void showRegesteredCourses(int studentID) throws SQLException, ClassNotFoundException {
         this.studentID = studentID;
         if (foundStudentID()) {
-            saveCoursesNames();
-            c = c1.connect();
-            ss = c.createStatement();
-            for (int i = 0; colNames[i] != null; i++) {
-                query = "SELECT COUNT (regesteredCourses." + colNames[i] + ") AS f FROM regesteredCourses WHERE studID = '" + this.studentID + "' AND regesteredCourses." + colNames[i] + " = '1'";
-                rs = ss.executeQuery(query);
-                rs.next();
-                if (rs.getInt("f") == 1) {
-                    System.out.print(colNames[i] + " ");
+            try {
+                c = c1.connect();
+                ss = c.createStatement();
+                saveCoursesNames();
+                for (int i = 0; colNames[i] != null; i++) {
+                    query = "SELECT COUNT (regesteredCourses." + colNames[i] + ") AS f FROM regesteredCourses WHERE studID = '" + this.studentID + "' AND regesteredCourses." + colNames[i] + " = '1'";
+                    rs = ss.executeQuery(query);
+                    rs.next();
+                    if (rs.getInt("f") == 1) {
+                        System.out.print(colNames[i] + " ");
+                    }
                 }
+                System.out.println("");
+            } catch (SQLException e) {
+                System.out.println(e);
             }
-            System.out.println("");
         }
     }
 
@@ -212,6 +216,7 @@ public class StudentShow {
     private static void saveCoursesNames() throws SQLException, ClassNotFoundException {
         DBconnect c1 = new DBconnect();
         c = c1.connect();
+        ss = c.createStatement();
         try {
             query = "SELECT INFORMATION_SCHEMA.COLUMNS.COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME LIKE 'regesteredCourses'";
             r = ss.executeQuery(query);
@@ -229,13 +234,7 @@ public class StudentShow {
                 colNames[i] = colNames[i + 1];
             }
         } catch (SQLException e) {
-
-        } finally {
-            try {
-                c.close();
-                ss.close();
-            } catch (SQLException e) {
-            }
+            System.out.println(e);
         }
     }
 

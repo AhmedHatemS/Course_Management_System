@@ -571,7 +571,6 @@ public class CourseManagementSystem {
                      System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
                     System.out.println("You choose operation 9 (To show registered courses.)");
                     System.out.println("- - - - - - - - - - - - - - - - - - - - - - - -");
-                    System.out.println(loginID);
                     sShow.showRegesteredCourses(loginID);
                     break;
                 case 10:
