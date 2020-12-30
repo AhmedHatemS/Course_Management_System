@@ -4,11 +4,6 @@ import MainDriver.DBconnect;
 import java.util.*;
 import java.sql.*;
 import java.sql.Date;
-
-/**
- *
- * @author devah
- */
 public class ManageData {
 
     private int ID;
