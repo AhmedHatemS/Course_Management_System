@@ -4,13 +4,8 @@ import MainDriver.*;
 import java.sql.*;
 import java.util.*;
 
-public class ShowCourseData {
+public class ShowCourseData extends GlobalVars{
 
-    private static Connection c;
-    private static Statement ss;
-    private static String query;
-    private static ResultSet r;
-    private DBconnect c1 = new DBconnect();
     private String CourseName;
     private String EndDate;
     private String StartDate;
@@ -32,9 +27,9 @@ public class ShowCourseData {
             c = c1.connect();
             ss = c.createStatement();
             query = "select * from student";
-            r = ss.executeQuery(query);
-            while (r.next()) {
-                List.add(new ShowCourseData(r.getString("studFirstName"), r.getString("studLastName")));
+            rs = ss.executeQuery(query);
+            while (rs.next()) {
+                List.add(new ShowCourseData(rs.getString("studFirstName"), rs.getString("studLastName")));
             }
             System.out.println("Students:");
             int counter=0;
@@ -62,9 +57,9 @@ public class ShowCourseData {
             ss = c.createStatement();
 
             query = "select * from instructor";
-            r = ss.executeQuery(query);
-            while (r.next()) {
-                List.add(new ShowCourseData(r.getString("instFName"), r.getString("instlName")));
+            rs = ss.executeQuery(query);
+            while (rs.next()) {
+                List.add(new ShowCourseData(rs.getString("instFName"), rs.getString("instlName")));
             }
             System.out.println("Instructors:");
             int counter = 0;

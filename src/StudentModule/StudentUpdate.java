@@ -1,16 +1,10 @@
 package StudentModule;
 
-import MainDriver.DBconnect;
+import MainDriver.*;
 import java.sql.*;
 import java.util.*;
 
-public class StudentUpdate {
-
-    private static Connection c;
-    private static Statement ss;
-    private static String query;
-    private static ResultSet rs;
-    private DBconnect c1 = new DBconnect();
+public class StudentUpdate extends GlobalVars{
 
     private int id;
     private String password;

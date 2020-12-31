@@ -1,15 +1,9 @@
 package StudentModule;
 
-import MainDriver.DBconnect;
+import MainDriver.*;
 import java.sql.*;
 
-public class RegesterCourse {
-
-    private DBconnect c1 = new DBconnect();
-    private static Connection c;
-    private static Statement ss;
-    private static ResultSet rs;
-    private static String query;
+public class RegesterCourse extends GlobalVars{
 
     int ID;
     String courseID, parentCourse;

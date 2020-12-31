@@ -1,4 +1,5 @@
 package CourseModule;
+
 import MainDriver.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -8,22 +9,20 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import javax.swing.JOptionPane;
-public class ShowCourseTime {
-    private static Connection c;
-    private static Statement ss;
-    private static String query;
-    private static ResultSet r;
-    private DBconnect c1 = new DBconnect();
+
+public class ShowCourseTime extends GlobalVars{
+
     private String Date;
     private String CourseName;
-    
-     public ShowCourseTime(String Date, String CourseName) {
+
+    public ShowCourseTime(String Date, String CourseName) {
         this.Date = Date;
         this.CourseName = CourseName;
     }
-      public ShowCourseTime() {
+
+    public ShowCourseTime() {
     }
-      Calendar calendar = Calendar.getInstance();
+    Calendar calendar = Calendar.getInstance();
 
     LocalDate date = LocalDate.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -36,12 +35,12 @@ public class ShowCourseTime {
             ss = c.createStatement();
 
             query = "select * from courses";
-            r = ss.executeQuery(query);
+            rs = ss.executeQuery(query);
             System.out.println("Courses near to end are:");
-            while (r.next()) {
-                List.add(new ShowCourseTime(r.getString("endDate"), r.getString("courseName")));
+            while (rs.next()) {
+                List.add(new ShowCourseTime(rs.getString("endDate"), rs.getString("courseName")));
             }
-            int counter=0;
+            int counter = 0;
             for (int i = 0; i < List.size(); i++) {
 
                 LocalDate firstDate;
@@ -50,7 +49,7 @@ public class ShowCourseTime {
                 long days = ChronoUnit.DAYS.between(date, firstDate);
                 if (date.compareTo(firstDate) < 0) {
                     if (days <= 7) {
-                        System.out.println((++counter) +"- " + List.get(i).CourseName);
+                        System.out.println((++counter) + "- " + List.get(i).CourseName);
                     }
                 }
 
@@ -67,7 +66,8 @@ public class ShowCourseTime {
             }
         }
     }
-        public void ShowNearToStart() throws ClassNotFoundException {
+
+    public void ShowNearToStart() throws ClassNotFoundException {
         try {
             ArrayList<ShowCourseTime> List = new ArrayList();
 
@@ -75,10 +75,10 @@ public class ShowCourseTime {
             ss = c.createStatement();
 
             query = "select * from courses";
-            r = ss.executeQuery(query);
+            rs = ss.executeQuery(query);
             System.out.println("Courses near to start are:");
-            while (r.next()) {
-                List.add(new ShowCourseTime(r.getString("startDate"), r.getString("courseName")));
+            while (rs.next()) {
+                List.add(new ShowCourseTime(rs.getString("startDate"), rs.getString("courseName")));
             }
             int counter = 0;
             for (int i = 0; i < List.size(); i++) {
@@ -89,7 +89,7 @@ public class ShowCourseTime {
                 long days = ChronoUnit.DAYS.between(firstDate, date);
                 if (date.compareTo(firstDate) < 0) {
                     if (days <= 7) {
-                        System.out.println((++counter)+"- " + List.get(i).CourseName);
+                        System.out.println((++counter) + "- " + List.get(i).CourseName);
                     }
                 }
 

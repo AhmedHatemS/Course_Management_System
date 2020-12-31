@@ -1,10 +1,10 @@
 package AdminModule;
 
-import MainDriver.DBconnect;
+import MainDriver.*;
 import java.util.*;
 import java.sql.*;
 import java.sql.Date;
-public class ManageData {
+public class ManageData extends GlobalVars{
 
     private int ID;
     private String SSN;
@@ -19,12 +19,6 @@ public class ManageData {
     private String address;
     private String nationality;
     private String courseID;
-
-    private DBconnect c1 = new DBconnect();
-    private static Connection c;
-    private static Statement ss;
-    private static ResultSet rs;
-    private static String query;
 
     private int assignUserID() throws ClassNotFoundException, SQLException {
 

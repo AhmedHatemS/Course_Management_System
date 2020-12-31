@@ -5,13 +5,8 @@ import MainDriver.*;
 import java.util.*;
 import java.sql.*;
 
-public class InstructorModule {
+public class InstructorModule extends GlobalVars{
     
-    private DBconnect c1 = new DBconnect();
-    private static Connection c;
-    private static Statement ss;
-    private static ResultSet rs;
-    private static String query;
     private int studentID;
     private float grade;
     private String courseID;

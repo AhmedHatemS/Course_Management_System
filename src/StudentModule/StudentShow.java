@@ -1,17 +1,13 @@
 package StudentModule;
 
 import AdminModule.GetAccess;
-import MainDriver.DBconnect;
+import MainDriver.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class StudentShow {
+public class StudentShow extends GlobalVars{
 
-    private static Connection c;
-    private static Statement ss;
-    private static String query;
-    private static ResultSet rs;
     private String id;
     private String Namecourse;
     private String parentcourse;
@@ -19,7 +15,6 @@ public class StudentShow {
     private int daysOfCourses;
     private String StartDate;
     private String EndDate;
-    private DBconnect c1 = new DBconnect();
     private String[] questions = {"Q1-The course was helpful.", "Q2-The instructor is enthusiastic and knowledgable about the course material.", "Q3-The instructor cleared up points of confusions.", "Q4-The course was effictively organized.", "Q5-The course developed my ability to read and think critically."};
     private String choice1 = "1) Strongly Agree";
     private String choice2 = "2) Argee";

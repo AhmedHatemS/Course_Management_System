@@ -5,13 +5,9 @@ import static java.lang.System.exit;
 import java.sql.*;
 import java.util.*;
 
-public class ManageCourses {
+public class ManageCourses extends GlobalVars{
 
-    private DBconnect c1 = new DBconnect();
-    private static Connection c;
-    private static Statement ss;
-    private ResultSet rs=null;
-    private static String query;
+    
     private String courseID;
     private String courseName;
     private String parentCourse;

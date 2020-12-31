@@ -1,21 +1,15 @@
 package AdminModule;
 
-import MainDriver.DBconnect;
+import MainDriver.*;
 import java.sql.*;
 
-public class GetAccess {
+public class GetAccess extends GlobalVars{
 
     private String userName;
     private String password;
     private int ID;
     private String SSN;
     private String role;
-
-    private DBconnect c1 = new DBconnect();
-    private static Connection c;
-    private static Statement ss;
-    private static ResultSet rs;
-    private static String query;
 
     public boolean login() {
         return false;
